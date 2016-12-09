@@ -18,6 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Window.hh" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F8B0CDCE-1104-4D85-BA5D-AF91FFC5DA4A}</ProjectGuid>
     <RootNamespace>Ateroids</RootNamespace>
