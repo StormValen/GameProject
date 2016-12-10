@@ -22,10 +22,67 @@
     <Filter Include="Controller">
       <UniqueIdentifier>{ed00190c-1f29-4319-9601-edf0cc4a2503}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{83dfb2cc-d148-4ec0-aa57-9250543d435f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.hh">
       <Filter>View</Filter>
     </ClInclude>
+    <ClInclude Include="InputManager.hh">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.hh">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.hh">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.hh">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.hh">
+      <Filter>Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="Assert.hh">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="IOManager.hh">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.hh">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.hh">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="System.hh">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ID.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cc" />
   </ItemGroup>
 </Project>
