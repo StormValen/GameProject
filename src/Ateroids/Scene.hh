@@ -1,4 +1,6 @@
 #pragma once
+#include "InputManager.hh"
+#include "Sprite.hh"
 
 // Enum state fot each Scene in the Game
 enum class SceneState {

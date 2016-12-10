@@ -2,7 +2,8 @@
 #include "System.hh"
 
 #pragma region GAME_SCENES
-#include "GameScene.hh"
+#include "MenuScene.hh"
+#include "LevelScene.hh"
 #pragma endregion TODO
 
 //! Initializes game needs and controls the game loop
@@ -10,8 +11,8 @@ namespace GameEngine {
 	//! Loads main resources such as game images and fonts
 	void LoadMedia(void) {
 		R.LoadFont<FontID::ARIAL>("fnt/arial.ttf", 40);
-		//R.LoadFont<FontID::CANDY>("fnt/candy.ttf", 50);
-		//R.LoadFont<FontID::FACTORY>("fnt/candsb.ttf", 80);
+		R.LoadFont<FontID::ASTEROIDS>("fnt/Hyperspace.otf", 50);
+		R.LoadFont<FontID::FACTORY>("fnt/candsb.ttf", 80);
 		//R.LoadTexture<ObjectID::CELL_EMPTY>("gfx/empty.png");
 		//R.LoadTexture<ObjectID::CANDY_BLUE>("gfx/blue.png");
 		//R.LoadTexture<ObjectID::CANDY_RED>("gfx/red.png");
@@ -19,12 +20,13 @@ namespace GameEngine {
 		//R.LoadTexture<ObjectID::CANDY_PURPLE>("gfx/purple.png");
 		//R.LoadTexture<ObjectID::CANDY_GREEN>("gfx/green.png");
 		//R.LoadTexture<ObjectID::CANDY_YELLOW>("gfx/yellow.png");
-		//R.LoadTexture<ObjectID::BG_00>("gfx/bg.jpg");
+		R.LoadTexture<ObjectID::BG_00>("gfx/bg.jpg");
 	}
 	//! Adds the game scenes into the Scene Manager and decides which is the first screen
 	void AddScenes(void) {
-		//SM.AddScene<GameScene>();
-		//SM.SetCurScene<GameScene>();
+		SM.AddScene<MenuScene>();	//FALTA AÑADIR LA ESCENA DEL JUEGO (POR CREAR)
+		SM.AddScene<LevelScene>();
+		SM.SetCurScene<MenuScene>();
 	}
 	/**
 	* Runs the game specifying the window's name and dimensions

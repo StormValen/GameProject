@@ -66,9 +66,6 @@
     <ClInclude Include="Color.hh">
       <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="GameScene.hh">
-      <Filter>Model</Filter>
-    </ClInclude>
     <ClInclude Include="GUI.hh">
       <Filter>Model</Filter>
     </ClInclude>
@@ -81,8 +78,20 @@
     <ClInclude Include="Transform.hh">
       <Filter>Model</Filter>
     </ClInclude>
+    <ClInclude Include="MenuScene.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelScene.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cc" />
+    <ClCompile Include="MenuScene.cc">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelScene.cc">
+      <Filter>Model</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

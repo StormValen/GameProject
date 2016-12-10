@@ -22,12 +22,13 @@
     <ClInclude Include="Assert.hh" />
     <ClInclude Include="Color.hh" />
     <ClInclude Include="GameEngine.hh" />
-    <ClInclude Include="GameScene.hh" />
     <ClInclude Include="GUI.hh" />
     <ClInclude Include="ID.hh" />
     <ClInclude Include="InputManager.hh" />
     <ClInclude Include="IOManager.hh" />
+    <ClInclude Include="LevelScene.hh" />
     <ClInclude Include="Logger.hh" />
+    <ClInclude Include="MenuScene.hh" />
     <ClInclude Include="Renderer.hh" />
     <ClInclude Include="Resource.hh" />
     <ClInclude Include="Scene.hh" />
@@ -39,7 +40,9 @@
     <ClInclude Include="Window.hh" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="LevelScene.cc" />
     <ClCompile Include="Main.cc" />
+    <ClCompile Include="MenuScene.cc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F8B0CDCE-1104-4D85-BA5D-AF91FFC5DA4A}</ProjectGuid>
