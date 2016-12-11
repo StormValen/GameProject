@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<easy>
+  <life>5</life>
+  <enemies>1</enemies>
+  <increment>3</increment>
+  <velocidad>1</velocidad>
+</easy>

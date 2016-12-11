@@ -3,6 +3,8 @@
 #include "Logger.hh"
 #include "LevelScene.hh"
 #include "MenuScene.hh"
+#include "XML.hh"
+#include "GameScene.hh"
 using namespace Logger;
 
 LevelScene::LevelScene(void) {
@@ -26,19 +28,28 @@ void LevelScene::Update(void) {
 		//EASY
 		if (mouseCoords.x < 370 && mouseCoords.x > 224 && mouseCoords.y < 186 && mouseCoords.y > 131) {
 			//Cargar fichero xml
-			Println("easy");
+			Xml("easyMode.xml");
+			SM.SetCurScene<GameScene>();
+
+			//Println("easy");
 		}
 
 		//MEDIUM
 		if (mouseCoords.x < 397 && mouseCoords.x > 199 && mouseCoords.y < 269 && mouseCoords.y > 216) {
 			//Cargar fichero xml
-			Println("medium");
+			Xml("mediumMode.xml");
+			SM.SetCurScene<GameScene>();
+
+			//Println("medium");
 		}
 
 		//HARD
 		if (mouseCoords.x < 370 && mouseCoords.x > 224 && mouseCoords.y < 351 && mouseCoords.y > 293) {
 			//Cargar fichero xml
-			Println("hard");
+			Xml("hardMode.xml");
+			SM.SetCurScene<GameScene>();
+
+			//Println("hard");
 		}
 	}
 }

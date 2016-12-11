@@ -3,6 +3,8 @@
 
 // Enum ID used to identify each Game Object in the Game
 enum class ObjectID : const int {
+	PLAYER, GREAT_AST, MIDDLE_AST, LITTLE_AST, //Tipos de asteroides
+	SHOOT,
 	BG_00  // Background IDs
 };
 inline std::ostream &operator<<(std::ostream &os, const ObjectID &id) { return os << int(id); };

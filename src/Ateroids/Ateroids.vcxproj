@@ -22,10 +22,10 @@
     <ClInclude Include="Assert.hh" />
     <ClInclude Include="Color.hh" />
     <ClInclude Include="GameEngine.hh" />
+    <ClInclude Include="GameScene.hh" />
     <ClInclude Include="GUI.hh" />
     <ClInclude Include="ID.hh" />
     <ClInclude Include="InputManager.hh" />
-    <ClInclude Include="IOManager.hh" />
     <ClInclude Include="LevelScene.hh" />
     <ClInclude Include="Logger.hh" />
     <ClInclude Include="MenuScene.hh" />
@@ -38,11 +38,19 @@
     <ClInclude Include="TimeManager.hh" />
     <ClInclude Include="Transform.hh" />
     <ClInclude Include="Window.hh" />
+    <ClInclude Include="XML.hh" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameScene.cc" />
     <ClCompile Include="LevelScene.cc" />
     <ClCompile Include="Main.cc" />
     <ClCompile Include="MenuScene.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="easyMode.xml" />
+    <Xml Include="hardMode.xml" />
+    <Xml Include="mediumMode.xml" />
+    <Xml Include="player.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F8B0CDCE-1104-4D85-BA5D-AF91FFC5DA4A}</ProjectGuid>

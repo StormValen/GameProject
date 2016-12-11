@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<player>
+  <x>300</x>
+  <y>200</y>
+  <angle>2</angle>
+  <velocity>1</velocity>
+</player>

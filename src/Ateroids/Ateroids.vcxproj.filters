@@ -25,6 +25,9 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{83dfb2cc-d148-4ec0-aa57-9250543d435f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="XMLs">
+      <UniqueIdentifier>{459bb118-8ed9-4430-8abd-f9889c50fea5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.hh">
@@ -46,9 +49,6 @@
       <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="Assert.hh">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="IOManager.hh">
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Logger.hh">
@@ -84,6 +84,12 @@
     <ClInclude Include="LevelScene.hh">
       <Filter>Model</Filter>
     </ClInclude>
+    <ClInclude Include="GameScene.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="XML.hh">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cc" />
@@ -93,5 +99,22 @@
     <ClCompile Include="LevelScene.cc">
       <Filter>Model</Filter>
     </ClCompile>
+    <ClCompile Include="GameScene.cc">
+      <Filter>Model</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="player.xml">
+      <Filter>XMLs</Filter>
+    </Xml>
+    <Xml Include="easyMode.xml">
+      <Filter>XMLs</Filter>
+    </Xml>
+    <Xml Include="mediumMode.xml">
+      <Filter>XMLs</Filter>
+    </Xml>
+    <Xml Include="hardMode.xml">
+      <Filter>XMLs</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
