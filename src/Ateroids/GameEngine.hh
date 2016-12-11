@@ -21,6 +21,7 @@ namespace GameEngine {
 		R.LoadTexture < ObjectID::PLAYER>("gfx/player.png");
 		R.LoadTexture < ObjectID::SHOOT>("gfx/shot.png");
 		R.LoadTexture<ObjectID::BG_00>("gfx/bg.jpg");
+		R.LoadTexture<ObjectID::BG_01>("gfx/bg0.jpg");
 	}
 	//! Adds the game scenes into the Scene Manager and decides which is the first screen
 	void AddScenes(void) {

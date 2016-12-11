@@ -5,7 +5,8 @@
 enum class ObjectID : const int {
 	PLAYER, GREAT_AST, MIDDLE_AST, LITTLE_AST, //Tipos de asteroides
 	SHOOT,
-	BG_00  // Background IDs
+	BG_00,
+	BG_01     // Background IDs
 };
 inline std::ostream &operator<<(std::ostream &os, const ObjectID &id) { return os << int(id); };
 inline std::istream &operator>>(std::istream &is, ObjectID &id) { return is >> reinterpret_cast<int&>(id); };
