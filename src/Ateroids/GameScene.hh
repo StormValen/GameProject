@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.hh"
+#include "Asteroid.hh"
 //#include "Player.hh"
 
 struct Player {
@@ -20,6 +21,7 @@ private:
 	Sprite m_background;
 	int m_score;
 	Player player;
+	Asteroid ast;
 	int player_life;
 	int num_ovnis;
 	float ovnis_velocity;

@@ -90,6 +90,9 @@
     <ClInclude Include="XML.hh">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Asteroid.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cc" />

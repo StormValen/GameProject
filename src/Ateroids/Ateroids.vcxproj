@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assert.hh" />
+    <ClInclude Include="Asteroid.hh" />
     <ClInclude Include="Color.hh" />
     <ClInclude Include="GameEngine.hh" />
     <ClInclude Include="GameScene.hh" />
