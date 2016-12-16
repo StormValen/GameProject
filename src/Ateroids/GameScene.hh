@@ -1,12 +1,6 @@
 #pragma once
 #include "Scene.hh"
-//#include "Player.hh"
-
-struct Player {
-	int player_x, player_y;
-	int player_vel, player_angl;
-	Sprite image;
-};
+#include "Ship.hh"
 
 class GameScene : public Scene {
 public:
@@ -19,7 +13,7 @@ public:
 private:
 	Sprite m_background;
 	int m_score;
-	Player player;
+	Ship ship;
 	int player_life;
 	int num_ovnis;
 	float ovnis_velocity;

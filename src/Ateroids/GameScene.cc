@@ -9,7 +9,8 @@ using namespace Logger;
 
 GameScene::GameScene(void){
 	m_background = { { 0, 0, W.GetWidth(), W.GetHeight() }, ObjectID::BG_00 };
-	player.image = { {300,200, 20, 20}, ObjectID::PLAYER };
+	ship.image = { {300,200, 20, 20}, ObjectID::PLAYER };
+	
 	m_score = 0;
 }
 
@@ -31,7 +32,7 @@ void GameScene::Update(void) {
 
 void GameScene::Draw(void) {
 	m_background.Draw();
-	player.image.Draw();
+	ship.image.Draw();
 
 	GUI::DrawTextSolid<FontID::ASTEROIDS>("score: " + std::to_string(m_score),
 	{ W.GetWidth() >> 2, int(W.GetHeight()*.9f), 1, 1 },
