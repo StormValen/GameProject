@@ -93,6 +93,9 @@
     <ClInclude Include="Ship.hh">
       <Filter>Model</Filter>
     </ClInclude>
+    <ClInclude Include="Asteroid.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cc" />
