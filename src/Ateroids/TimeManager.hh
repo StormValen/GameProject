@@ -2,8 +2,8 @@
 #include <SDL.h>
 #include <functional>
 
-#define SCREEN_FPS 120.0f
-#define SCREEN_TICKS_PER_FRAME (1000.0f / SCREEN_FPS)
+#define SCREEN_FPS 60.0f
+#define SCREEN_TICKS_PER_FRAME (0.0f / SCREEN_FPS)
 
 #define TM TimeManager::Instance()
 
