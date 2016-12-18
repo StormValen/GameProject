@@ -32,7 +32,7 @@ void GameScene::Update(void) {
 		AddAST();
 	}
 	if (IM.IsKeyDown<KEY_BUTTON_LCTRL>()) {
-		DeleteAST();
+		DeleteAST(0);
 	}
 	if (frames >= 20) {
 		for (int i = 0; i < Asts.size(); i++) {

@@ -10,19 +10,44 @@ public:
 	int velocity;
 	int dim, dir;
 	Sprite asteroid_image;
-	Asteroid(){
+	Asteroid(int dim):dim(dim){
 		x = rand()%600;
 		y = rand()%400;
 		velocity = 1;
-		dim = 1;
 		dir = rand() % 8;
-		asteroid_image = { { x, y,50,50 },ObjectID::MIDDLE_AST };
+		switch (dim) {
+		case 0:
+			asteroid_image = { { x, y,50,50 },ObjectID::GREAT_AST };
+			break;
+		case 1:
+			asteroid_image = { { x, y,50,50 },ObjectID::MIDDLE_AST };
+			break;
+		case 2:
+			asteroid_image = { { x, y,50,50 },ObjectID::LITTLE_AST };
+			break;
+		default:
+			break;
+		}
+		
 	}
 	~Asteroid() {
 	}
 	void Update() {
-		asteroid_image = { {x,y,50,50},ObjectID::MIDDLE_AST };
+		switch (dim) {
+		case 0:
+			asteroid_image = { { x, y,90,90 },ObjectID::GREAT_AST };
+			break;
+		case 1:
+			asteroid_image = { { x, y,60,60 },ObjectID::MIDDLE_AST };
+			break;
+		case 2:
+			asteroid_image = { { x, y,30,30 },ObjectID::LITTLE_AST };
+			break;
+		default:
+			break;
+		}
 	}
+
 	void Movement() {
 		switch (dir) {
 		case 0:
