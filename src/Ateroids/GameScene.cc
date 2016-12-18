@@ -33,9 +33,11 @@ void GameScene::Update(void) {
 		DeleteAST(0);
 	}
 
-	if (IM.IsKeyDown<KEY_BUTTON_UP>()) {
-		ship.movement();
-		ship.update();
+	if (IM.IsKeyHold<KEY_BUTTON_UP>()) {
+		if (frames >= 20) {
+			ship.movement();
+			ship.update();
+		}
 	}
 
 
