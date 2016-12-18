@@ -4,13 +4,11 @@
 #include "MenuScene.hh"
 #include "LevelScene.hh"
 #include "GameScene.hh"
-#include "Ship.hh"
 
 using namespace Logger;
 
 GameScene::GameScene(void){
 	m_background = { { 0, 0, W.GetWidth(), W.GetHeight() }, ObjectID::BG_00 };
-	player.image = { { 300,200, 20, 20 }, ObjectID::PLAYER };
 	m_score = 0;
 	limit = 5;
 	//ship.image = { {300,200, 20, 20}, ObjectID::PLAYER };
@@ -34,6 +32,13 @@ void GameScene::Update(void) {
 	if (IM.IsKeyDown<KEY_BUTTON_LCTRL>()) {
 		DeleteAST(0);
 	}
+
+	if (IM.IsKeyDown<KEY_BUTTON_UP>()) {
+		ship.movement();
+		ship.update();
+	}
+
+
 	if (frames >= 20) {
 		for (int i = 0; i < Asts.size(); i++) {
 			Asts[i].Movement();
@@ -46,8 +51,8 @@ void GameScene::Update(void) {
 
 void GameScene::Draw(void) {
 	m_background.Draw();
-	player.image.Draw();
-	//ship.image.Draw();
+	ship.ship_image.Draw();
+	
 
 	for (int i = 0; i < Asts.size(); i++) {
 		Asts[i].asteroid_image.Draw();

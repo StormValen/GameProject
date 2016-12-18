@@ -1,13 +1,9 @@
 #pragma once
 #include "Scene.hh"
 #include "Asteroid.hh"
+#include "Ship.hh"
 #include <vector>
 
-struct Player {
-	int player_x, player_y;
-	int player_vel, player_angl;
-	Sprite image;
-};
 
 class GameScene : public Scene {
 public:
@@ -55,7 +51,7 @@ private:
 	Sprite m_background;
 	int m_score;
 	int limit; // LEER DE XML !!!!!!!!!!!
-	Player player;
+	Ship ship;
 	std::vector<Asteroid> Asts;
 
 	int player_life;
