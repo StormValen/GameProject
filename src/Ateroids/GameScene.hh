@@ -60,4 +60,5 @@ private:
 	int increment_ovnis;
 	float asteroids_velocity = 1;
 	int frames;
+	int frames_ship;
 };

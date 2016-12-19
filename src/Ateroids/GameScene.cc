@@ -11,7 +11,6 @@ GameScene::GameScene(void){
 	m_background = { { 0, 0, W.GetWidth(), W.GetHeight() }, ObjectID::BG_00 };
 	m_score = 0;
 	limit = 5;
-	//ship.image = { {300,200, 20, 20}, ObjectID::PLAYER };
 }
 
 GameScene::~GameScene(void) {
@@ -34,14 +33,14 @@ void GameScene::Update(void) {
 	}
 
 	if (IM.IsKeyHold<KEY_BUTTON_UP>()) {
-		if (frames >= 20) {
-			ship.movement();
-			ship.update();
+		if (frames_ship >= 50) {
+			ship.Update();
+			ship.Movement();
+			frames_ship = 0;
 		}
 	}
-
-
-	if (frames >= 20) {
+	
+	if (frames >= 100) {
 		for (int i = 0; i < Asts.size(); i++) {
 			Asts[i].Movement();
 			Asts[i].Update();
@@ -49,6 +48,7 @@ void GameScene::Update(void) {
 		frames = 0;
 	}
 	frames++;
+	frames_ship++;
 }
 
 void GameScene::Draw(void) {
