@@ -6,7 +6,8 @@
 using namespace Logger;
 
 MenuScene::MenuScene(void) {
-	m_background = { { 0, 0, W.GetWidth(), W.GetHeight() }, ObjectID::BG_01 };
+	m_background.transform = { 0, 0, W.GetWidth(), W.GetHeight() };
+	m_background.objectID = ObjectID::BG_01;
 }
 
 MenuScene::~MenuScene(void) {
@@ -21,9 +22,6 @@ void MenuScene::OnExit(void) {
 void MenuScene::Update(void) {
 	static MouseCoords mouseCoords(0, 0);
 	if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
-	
-		//Println("===============");
-		//Println("mxp: ", mouseCoords);
 		mouseCoords = IM.GetMouseCoords();
 		if (mouseCoords.x < 360 && mouseCoords.x > 240 && mouseCoords.y < 351 && mouseCoords.y > 288) {
 			SetState<SceneState::EXIT>();

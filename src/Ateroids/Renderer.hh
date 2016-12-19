@@ -77,6 +77,10 @@ public:
 	void Push(const ObjectID &objectID, const Transform &transform) {
 		ASSERT(!SDL_RenderCopy(m_SDLRenderer, m_textureData[objectID], nullptr, &transform()));
 	}
+	void Push(const ObjectID &objectID, const Transform &transform, const double angle) {
+		SDL_Point center = { transform.x+transform.w/2,transform.y + transform.h / 2 };
+		ASSERT(!SDL_RenderCopyEx(m_SDLRenderer, m_textureData[objectID], nullptr, &transform(),(static_cast<int>(angle) % 360), nullptr , SDL_FLIP_NONE));
+	}
 	void Clear(void) const { SDL_RenderClear(m_SDLRenderer); };
 	void Render(void) const { SDL_RenderPresent(m_SDLRenderer); };
 private:

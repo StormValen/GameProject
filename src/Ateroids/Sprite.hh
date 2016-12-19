@@ -4,8 +4,9 @@
 #include "Transform.hh"
 
 // Sprite class that serves as part of the Model
-struct Sprite {
+class Sprite {
+public:
 	Transform transform;
 	ObjectID objectID;
-	void Draw() { R.Push(objectID, transform); };
+	virtual void Draw() { R.Push(objectID, transform); };
 };

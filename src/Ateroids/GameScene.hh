@@ -13,6 +13,7 @@ public:
 	void OnExit(void) override;
 	void Update(void) override;
 	void Draw(void) override;
+
 	void AddAST() {
 		if (Asts.size() < limit) {
 			Asteroid nuevo_asteroide(0);
@@ -50,15 +51,15 @@ public:
 private:
 	Sprite m_background;
 	int m_score;
-	int limit; // LEER DE XML !!!!!!!!!!!
+	int limit; // XML 
 	Ship ship;
 	std::vector<Asteroid> Asts;
 
-	int player_life;
-	int num_ovnis;
-	float ovnis_velocity;
-	int increment_ovnis;
-	float asteroids_velocity = 1;
-	int frames;
-	int frames_ship;
+	int player_life;	//XML
+	int num_ovnis;		//XML
+	float ovnis_velocity;  //XML
+	int increment_ovnis;	//XML
+	
+	int frames; // CONTROLA LA FREQUENCIA A LA QUE SE ACTUALIZA LA POSICION DE LOS ASTEROIDES, POR DEFECTO LA VELOCIDAD 1 (MINIMA ES DEMASIADO ALTA)
+	int frames_ship;	//CONTROLA LA FREQUENCIA A LA QUE SE ACTUALIZA LA POSICION DE LA NAVE (TAMBIEN LA MINIMA ES DEMASIADO ALTA).
 };

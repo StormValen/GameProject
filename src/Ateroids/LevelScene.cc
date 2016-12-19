@@ -8,7 +8,8 @@
 using namespace Logger;
 
 LevelScene::LevelScene(void) {
-	m_background = { { 0, 0, W.GetWidth(), W.GetHeight() }, ObjectID::BG_01 };
+	m_background.transform = { 0, 0, W.GetWidth(), W.GetHeight() };
+	m_background.objectID = ObjectID::BG_01;
 }
 
 LevelScene::~LevelScene(void) {

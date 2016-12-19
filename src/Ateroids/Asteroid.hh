@@ -3,13 +3,13 @@
 #include "Transform.hh"
 
 
-class Asteroid {
+class Asteroid : public Sprite {
 
 public:
 	int x, y;
 	int velocity;
 	int dim, dir;
-	Sprite asteroid_image;
+	
 	Asteroid(int dim):dim(dim){
 		x = rand()%600;
 		y = rand()%400;
@@ -17,13 +17,20 @@ public:
 		dir = rand() % 8;
 		switch (dim) {
 		case 0:
-			asteroid_image = { { x, y,50,50 },ObjectID::GREAT_AST };
+			//asteroid_image = { { x, y,50,50 },ObjectID::GREAT_AST };
+			transform = { x,y, 90,90 };
+			objectID = ObjectID::GREAT_AST;
+
 			break;
 		case 1:
-			asteroid_image = { { x, y,50,50 },ObjectID::MIDDLE_AST };
+			//asteroid_image = { { x, y,50,50 },ObjectID::MIDDLE_AST };
+			transform = { x,y,60,60 };
+			objectID = ObjectID::MIDDLE_AST;
 			break;
 		case 2:
-			asteroid_image = { { x, y,50,50 },ObjectID::LITTLE_AST };
+			//asteroid_image = { { x, y,50,50 },ObjectID::LITTLE_AST };
+			transform = { x,y, 30,30 };
+			objectID = ObjectID::LITTLE_AST;
 			break;
 		default:
 			break;
@@ -33,7 +40,7 @@ public:
 	~Asteroid() {
 	}
 	void Update() {
-		switch (dim) {
+		/*switch (dim) {
 		case 0:
 			asteroid_image = { { x, y,90,90 },ObjectID::GREAT_AST };
 			break;
@@ -42,6 +49,26 @@ public:
 			break;
 		case 2:
 			asteroid_image = { { x, y,30,30 },ObjectID::LITTLE_AST };
+			break;
+		default:
+			break;
+		}*/
+		switch (dim) {
+		case 0:
+			//asteroid_image = { { x, y,50,50 },ObjectID::GREAT_AST };
+			transform = { x,y, 90,90 };
+			objectID = ObjectID::GREAT_AST;
+
+			break;
+		case 1:
+			//asteroid_image = { { x, y,50,50 },ObjectID::MIDDLE_AST };
+			transform = { x,y,60,60 };
+			objectID = ObjectID::MIDDLE_AST;
+			break;
+		case 2:
+			//asteroid_image = { { x, y,50,50 },ObjectID::LITTLE_AST };
+			transform = { x,y, 30,30 };
+			objectID = ObjectID::LITTLE_AST;
 			break;
 		default:
 			break;
@@ -85,4 +112,5 @@ public:
 	void RandomDir() {
 		dir = rand() % 8;
 	}
+	virtual void Draw() { R.Push(objectID, transform); };
 };

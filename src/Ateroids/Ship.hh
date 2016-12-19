@@ -7,32 +7,25 @@
 using namespace std;
 
 
-class Ship {
+class  Ship : public Sprite {
 
-	SDL_Point pos;
+	//SDL_Point pos;
 	int ship_speed;
-	float cosA;
-	float sinA;
-	float vel[2];
 	float ship_angle;
 	bool alive = true;
-	int rot = NONE;
 
 public:
 	
-	Sprite ship_image;
-	enum rotateDir { LEFT = 1, RIGHT = 2, NONE = 0 };
+	//Sprite ship_image;
 
-	Ship() : pos({ 300,200 })
+	Ship()
 	{
+		transform = { 300,200, 20,25 };
+		objectID = ObjectID::PLAYER;
 		ship_speed = 1;
 		ship_angle = 0.0;
-		cosA = 0.0;
-		sinA = 0.0;
-		vel[0] = 0.0;
-		vel[1] = 0.0;
 
-		ship_image = { { pos.x, pos.y, 20, 25 }, ObjectID::PLAYER };
+		//ship_image = { { pos.x, pos.y, 20, 25 }, ObjectID::PLAYER };
 	}
 
 	~Ship()
@@ -40,7 +33,7 @@ public:
 
 	}
 
-	SDL_Point getPos() { return pos; }
+	//SDL_Point getPos() { return pos; }
 	bool isAlive() { return alive; }
 	//void setAlive() { alive; }
 	//void rotate(const int& val) { rotation = val; }
@@ -50,53 +43,50 @@ public:
 	{
 		if (alive)
 		{
-			cosA = cos(ship_angle);
-			sinA = sin(ship_angle);
-
 			// Go forward
-			pos.y -= ship_speed;
-			vel[0] += ship_speed * cosA;
-			vel[1] += ship_speed * sinA;
-	
+			
 
-			if (IM.IsKeyHold<KEY_BUTTON_LEFT>()) {
-				pos.x -= ship_speed;
-			}
 
-			if (IM.IsKeyHold<KEY_BUTTON_RIGHT>()) {
-				pos.x += ship_speed;
-			}
+			//if (IM.IsKeyHold<KEY_BUTTON_UP>()) {
+				//transform.x -= ship_speed;
 
-			switch (rot)
-			{
-			case LEFT:
-				ship_angle -= 0.175;
-				break;
+			std::cout << ship_angle << std::endl;
+			float xx = cos(ship_angle);
+			float yy = sin(ship_angle);
 
-			case RIGHT:
-				ship_angle += 0.175;
-				break;
+			std::cout << xx << std::endl;
+			std::cout << yy << std::endl;
 
-			case NONE:
-				break;
+			
 
-			default:
-				break;
-			}
-			//pos.x -= vel[0];
-			//pos.x += vel[1];
+			transform.y -= xx;
+			transform.x += yy;
 
-		
+			//}
+			/*if (IM.IsKeyHold<KEY_BUTTON_LEFT>()) {
+				//transform.x -= ship_speed;
+				ship_angle -= 5;
+			}*/
+
+			/*if (IM.IsKeyHold<KEY_BUTTON_RIGHT>()) {
+				//transform.x += ship_speed;
+				ship_angle += 5;
+			}*/
 		}
-	    if (pos.y == 400)pos.y = 0;
-		else if (pos.y == 0)pos.y = 400;
-		else if (pos.x == 600)pos.x = 0;
-		else if (pos.x == 0)pos.x = 600;
+	    if (transform.y == 400)transform.y = 0;
+		else if (transform.y == 0)transform.y = 400;
+		else if (transform.x == 600)transform.x = 0;
+		else if (transform.x == 0)transform.x = 600;
+	}
+	void RotateRight() {
+		ship_angle += 5 % 360;
+	}
+	void RotateLeft() {
+		ship_angle -= 5 % 360;
 	}
 	
-	void Update()
-	{
-		ship_image = { { pos.x, pos.y, 20, 25 }, ObjectID::PLAYER };
-	}
+
+	
+	virtual void Draw() { R.Push(objectID, transform, ship_angle); };
 };
 

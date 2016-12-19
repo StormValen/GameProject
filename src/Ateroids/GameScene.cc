@@ -8,7 +8,8 @@
 using namespace Logger;
 
 GameScene::GameScene(void){
-	m_background = { { 0, 0, W.GetWidth(), W.GetHeight() }, ObjectID::BG_00 };
+	m_background.transform = { 0, 0, W.GetWidth(), W.GetHeight() };
+	m_background.objectID = ObjectID::BG_00;
 	m_score = 0;
 	limit = 5;
 }
@@ -34,8 +35,19 @@ void GameScene::Update(void) {
 
 	if (IM.IsKeyHold<KEY_BUTTON_UP>()) {
 		if (frames_ship >= 50) {
-			ship.Update();
 			ship.Movement();
+			frames_ship = 0;
+		}
+	}
+	if (IM.IsKeyHold<KEY_BUTTON_RIGHT>()) {
+		if (frames_ship >= 50) {
+			ship.RotateRight();
+			frames_ship = 0;
+		}
+	}
+	if (IM.IsKeyHold<KEY_BUTTON_LEFT>()) {
+		if (frames_ship >= 50) {
+			ship.RotateLeft();
 			frames_ship = 0;
 		}
 	}
@@ -53,11 +65,11 @@ void GameScene::Update(void) {
 
 void GameScene::Draw(void) {
 	m_background.Draw();
-	ship.ship_image.Draw();
+	ship.Draw();
 	
 
 	for (int i = 0; i < Asts.size(); i++) {
-		Asts[i].asteroid_image.Draw();
+		Asts[i].Draw();
 	}
 
 	GUI::DrawTextSolid<FontID::ASTEROIDS>("score: " + std::to_string(m_score),
