@@ -32,7 +32,7 @@ public:
 		vel[0] = 0.0;
 		vel[1] = 0.0;
 
-		ship_image = { { pos.x, pos.y, 20, 20 }, ObjectID::PLAYER };
+		ship_image = { { pos.x, pos.y, 20, 25 }, ObjectID::PLAYER };
 	}
 
 	~Ship()
@@ -96,7 +96,7 @@ public:
 	
 	void Update()
 	{
-		ship_image = { { pos.x, pos.y, 20, 20 }, ObjectID::PLAYER };
+		ship_image = { { pos.x, pos.y, 20, 25 }, ObjectID::PLAYER };
 	}
 };
 
