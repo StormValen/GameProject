@@ -15,10 +15,8 @@ public:
 	void Draw(void) override;
 
 	void AddAST() {
-		if (Asts.size() < limit) {
 			Asteroid nuevo_asteroide(0);
-			Asts.push_back(nuevo_asteroide);
-		}
+			Asts.push_back(nuevo_asteroide);	
 	}
 	void DeleteAST(int pos) {
 		int D = (Asts[pos].dim)+1;
@@ -36,13 +34,13 @@ public:
 		}
 		switch (D-1) {
 		case 0:
-			m_score += 10;
+			m_score += 20;
 			break;
 		case 1:
-			m_score += 5;
+			m_score += 50;
 			break;
 		case 2:
-			m_score += 1;
+			m_score += 100;
 			break;
 		default: 
 			break;
@@ -51,7 +49,6 @@ public:
 private:
 	Sprite m_background;
 	int m_score;
-	int limit; // XML 
 	Ship ship;
 	std::vector<Asteroid> Asts;
 
@@ -60,6 +57,7 @@ private:
 	float ovnis_velocity;  //XML
 	int increment_ovnis;	//XML
 	
+	int frequencia;
 	int frames; // CONTROLA LA FREQUENCIA A LA QUE SE ACTUALIZA LA POSICION DE LOS ASTEROIDES, POR DEFECTO LA VELOCIDAD 1 (MINIMA ES DEMASIADO ALTA)
 	int frames_ship;	//CONTROLA LA FREQUENCIA A LA QUE SE ACTUALIZA LA POSICION DE LA NAVE (TAMBIEN LA MINIMA ES DEMASIADO ALTA).
 };

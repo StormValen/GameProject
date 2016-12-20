@@ -14,8 +14,11 @@ GameScene::GameScene(void){
 	m_background.transform = { 0, 0, W.GetWidth(), W.GetHeight() };
 	m_background.objectID = ObjectID::BG_00;
 	m_score = 0;
-	player_life = 0;
-	limit = 5;
+	player_life = -1; //XML			-1 -> no se ha leido nada de xml.
+	num_ovnis = -1;		//XML
+	ovnis_velocity = -1;  //XML
+	increment_ovnis = -1;	//XML
+	frequencia = 0;
 }
 
 GameScene::~GameScene(void) {
@@ -28,19 +31,20 @@ void GameScene::OnExit(void) {
 }
 
 void GameScene::Update(void) {
-	//for (int i = 0; i < 4; i++) {
-		//std::cout << LevelScene::param[i] << std::endl;
-	//}
-	player_life = LevelScene::param[0];
-
+	if (player_life == -1)player_life = LevelScene::param[0];
+	if (num_ovnis == -1)num_ovnis = LevelScene::param[1];
+	if (ovnis_velocity == -1)ovnis_velocity = LevelScene::param[2];
+	if (increment_ovnis == -1)increment_ovnis = LevelScene::param[3];
+	
 	static MouseCoords mouseCoords(0, 0);
-	if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
-		mouseCoords = IM.GetMouseCoords();
+		
+	if (frequencia == 30000) {
 		AddAST();
+		frequencia = 0;
 	}
+		
 	if (IM.IsKeyDown<KEY_BUTTON_LCTRL>()) {
-		//DeleteAST(0);
-		ship.dead();
+		DeleteAST(0);
 	}
 
 	if (IM.IsKeyHold<KEY_BUTTON_UP>()) {
@@ -61,7 +65,6 @@ void GameScene::Update(void) {
 			frames_ship = 0;
 		}
 	}
-	
 	if (frames >= 100) {
 		for (int i = 0; i < Asts.size(); i++) {
 			Asts[i].Movement();
@@ -71,6 +74,7 @@ void GameScene::Update(void) {
 	}
 	frames++;
 	frames_ship++;
+	frequencia++;
 }
 
 void GameScene::Draw(void) {

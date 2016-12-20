@@ -52,8 +52,6 @@ public:
 	void RotateRight() {
 		ship_angle += 5;
 		if (ship_angle >= 360)ship_angle = 0;
-	
-		std::cout << ship_angle << std::endl; 
 	}
 	void RotateLeft() {
 		if (ship_angle == 0) {
@@ -63,7 +61,6 @@ public:
 			ship_angle -= 5;
 		}
 		if (ship_angle >= 360)ship_angle = 0;
-		std::cout << ship_angle << std::endl;
 	}
 	virtual void Draw() { R.Push(objectID, transform, ship_angle); };
 };
