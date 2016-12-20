@@ -31,7 +31,8 @@ void GameScene::Update(void) {
 		AddAST();
 	}
 	if (IM.IsKeyDown<KEY_BUTTON_LCTRL>()) {
-		DeleteAST(0);
+		//DeleteAST(0);
+		ship.dead();
 	}
 
 	if (IM.IsKeyHold<KEY_BUTTON_UP>()) {
