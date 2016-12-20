@@ -12,7 +12,8 @@ namespace GameEngine {
 	//! Loads main resources such as game images and fonts
 	void LoadMedia(void) {
 		R.LoadFont<FontID::ARIAL>("fnt/arial.ttf", 40);
-		R.LoadFont<FontID::ASTEROIDS>("fnt/Hyperspace.otf", 20);
+		R.LoadFont<FontID::ASTEROIDS>("fnt/Hyperspace.otf", 50);
+		R.LoadFont<FontID::ASTEROIDS01>("fnt/Hyperspace.otf", 20);
 		R.LoadFont<FontID::FACTORY>("fnt/candsb.ttf", 80);
 	
 		R.LoadTexture < ObjectID::GREAT_AST>("gfx/gast.png");

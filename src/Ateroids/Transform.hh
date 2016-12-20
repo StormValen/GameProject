@@ -5,7 +5,7 @@
 struct Transform {
 	union {
 		SDL_Rect rect;
-		struct { Sint32 x, y, w, h; };
+		struct { Sint32  x, y, w, h; };
 	};
 	Transform(int x_, int y_) : x(x_), y(y_), w(0), h(0) {};
 	Transform(int x_, int y_, int w_, int h_) : x(x_), y(y_), w(w_), h(h_) {};

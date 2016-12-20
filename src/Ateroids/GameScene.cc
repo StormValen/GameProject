@@ -11,6 +11,7 @@ GameScene::GameScene(void){
 	m_background.transform = { 0, 0, W.GetWidth(), W.GetHeight() };
 	m_background.objectID = ObjectID::BG_00;
 	m_score = 0;
+	player_life = 5;
 	limit = 5;
 }
 
@@ -34,7 +35,7 @@ void GameScene::Update(void) {
 	}
 
 	if (IM.IsKeyHold<KEY_BUTTON_UP>()) {
-		if (frames_ship >= 50) {
+		if (frames_ship >= 200) {
 			ship.Movement();
 			frames_ship = 0;
 		}
@@ -72,7 +73,11 @@ void GameScene::Draw(void) {
 		Asts[i].Draw();
 	}
 
-	GUI::DrawTextSolid<FontID::ASTEROIDS>("score: " + std::to_string(m_score),
-	{ W.GetWidth() >> 2, int(W.GetHeight()*.9f), 1, 1 },
+	GUI::DrawTextSolid<FontID::ASTEROIDS01>("score: " + std::to_string(m_score),
+	{ W.GetWidth() >> 3, int(W.GetHeight()*.1f), 1, 1 },
+	{ 255, 255, 255 });
+
+	GUI::DrawTextSolid<FontID::ASTEROIDS01>("life: " + std::to_string(player_life),
+	{ W.GetWidth() >> 3, int(W.GetHeight()*.17f), 1, 1 },
 	{ 255, 255, 255 });
 }

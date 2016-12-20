@@ -3,6 +3,9 @@
 #include <iostream>
 #include "Sprite.hh"
 #include "Transform.hh"
+#include <math.h>
+
+#define PI 3.14159265
 
 using namespace std;
 
@@ -41,48 +44,44 @@ public:
 	
 	void Movement()
 	{
-		if (alive)
-		{
-			// Go forward
+		
 			
-
-
-			//if (IM.IsKeyHold<KEY_BUTTON_UP>()) {
-				//transform.x -= ship_speed;
-
 			std::cout << ship_angle << std::endl;
-			float xx = cos(ship_angle);
-			float yy = sin(ship_angle);
 
-			std::cout << xx << std::endl;
-			std::cout << yy << std::endl;
 
-			
+			float A = cos(ship_angle*PI / 180);
+			float B = sin(ship_angle*PI / 180);
 
-			transform.y -= xx;
-			transform.x += yy;
+			transform.x += B*10;
+			std::cout << B << std::endl;
+			transform.y -= A*10;
+			std::cout << A << std::endl;
 
-			//}
-			/*if (IM.IsKeyHold<KEY_BUTTON_LEFT>()) {
-				//transform.x -= ship_speed;
-				ship_angle -= 5;
-			}*/
 
-			/*if (IM.IsKeyHold<KEY_BUTTON_RIGHT>()) {
-				//transform.x += ship_speed;
-				ship_angle += 5;
-			}*/
-		}
-	    if (transform.y == 400)transform.y = 0;
-		else if (transform.y == 0)transform.y = 400;
-		else if (transform.x == 600)transform.x = 0;
-		else if (transform.x == 0)transform.x = 600;
+
+		
+	
+	    if (transform.y >= 400)transform.y = 0;
+		else if (transform.y <= 0)transform.y = 400;
+		else if (transform.x >= 600)transform.x = 0;
+		else if (transform.x <= 0)transform.x = 600;
 	}
 	void RotateRight() {
-		ship_angle += 5 % 360;
+		ship_angle += 5;
+		if (ship_angle >= 360)ship_angle = 0;
+	
+		std::cout << ship_angle << std::endl; 
 	}
 	void RotateLeft() {
-		ship_angle -= 5 % 360;
+		if (ship_angle == 0) {
+			ship_angle = 355;
+		}
+		else {
+			ship_angle -= 5;
+		}
+
+		if (ship_angle >= 360)ship_angle = 0;
+		std::cout << ship_angle << std::endl;
 	}
 	
 
