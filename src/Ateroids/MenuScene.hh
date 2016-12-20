@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.hh"
 
-// GameScene class with the main gameplay mode
+//Escena inicial en la que elegir si jugar o salir.
 class MenuScene : public Scene {
 public:
 	explicit MenuScene();
@@ -12,5 +12,4 @@ public:
 	void Draw(void) override;
 private:
 	Sprite m_background;
-	std::string name;
 };

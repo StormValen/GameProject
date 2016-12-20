@@ -28,36 +28,23 @@ void LevelScene::Update(void) {
 	static MouseCoords mouseCoords(0, 0);
 	if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
 		mouseCoords = IM.GetMouseCoords();
-
 		//EASY
 		if (mouseCoords.x < 370 && mouseCoords.x > 224 && mouseCoords.y < 186 && mouseCoords.y > 131) {
-			//Cargar fichero xml
 			Xml("easyMode.xml");
-			for (int i = 0; i < 4; i++) {
-				std::cout << param[i] << std::endl;
-			}
-			
+			PrintLevel("Easy");
 			SM.SetCurScene<GameScene>();
-
-			//Println("easy");
 		}
-
 		//MEDIUM
 		if (mouseCoords.x < 397 && mouseCoords.x > 199 && mouseCoords.y < 269 && mouseCoords.y > 216) {
-			//Cargar fichero xml
 			Xml("mediumMode.xml");
+			PrintLevel("Medium");
 			SM.SetCurScene<GameScene>();
-
-			//Println("medium");
 		}
-
 		//HARD
 		if (mouseCoords.x < 370 && mouseCoords.x > 224 && mouseCoords.y < 351 && mouseCoords.y > 293) {
-			//Cargar fichero xml
 			Xml("hardMode.xml");
+			PrintLevel("Hard");
 			SM.SetCurScene<GameScene>();
-
-			//Println("hard");
 		}
 	}
 }

@@ -23,12 +23,8 @@ void MenuScene::Update(void) {
 	static MouseCoords mouseCoords(0, 0);
 	if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
 		mouseCoords = IM.GetMouseCoords();
-		if (mouseCoords.x < 360 && mouseCoords.x > 240 && mouseCoords.y < 351 && mouseCoords.y > 288) {
-			SetState<SceneState::EXIT>();
-		}
-		if (mouseCoords.x < 360 && mouseCoords.x > 240 && mouseCoords.y < 272 && mouseCoords.y > 209) {
-			SM.SetCurScene<LevelScene>();
-		}
+		if (mouseCoords.x < 360 && mouseCoords.x > 240 && mouseCoords.y < 351 && mouseCoords.y > 288)SetState<SceneState::EXIT>();
+		if (mouseCoords.x < 360 && mouseCoords.x > 240 && mouseCoords.y < 272 && mouseCoords.y > 209)SM.SetCurScene<LevelScene>();
 	}
 }
 
