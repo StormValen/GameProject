@@ -7,6 +7,7 @@
 #include "Assert.hh"
 #include "Resource.hh"
 #include <XML/rapidxml_utils.hpp>
+#include "LevelScene.hh"
 using namespace Logger;
 
 void Xml(std::string filename) {
@@ -25,6 +26,9 @@ void Xml(std::string filename) {
 	int atr_counter = 0;
 	for (rapidxml::xml_node<> *pRit = pRoot->first_node(); atr_counter < 4; atr_counter++ ) {
 		std::cout<< "	CHILD: " << pRit->name() << " -> VALUE: " << pRit->value() << "\n";
+		LevelScene::param.push_back(atoi(pRit->value()));
 		pRit = pRit->next_sibling();
 	}
+
+	
 }

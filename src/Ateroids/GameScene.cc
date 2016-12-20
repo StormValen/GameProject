@@ -5,13 +5,16 @@
 #include "LevelScene.hh"
 #include "GameScene.hh"
 
+
 using namespace Logger;
+
+
 
 GameScene::GameScene(void){
 	m_background.transform = { 0, 0, W.GetWidth(), W.GetHeight() };
 	m_background.objectID = ObjectID::BG_00;
 	m_score = 0;
-	player_life = 5;
+	player_life = 0;
 	limit = 5;
 }
 
@@ -25,6 +28,11 @@ void GameScene::OnExit(void) {
 }
 
 void GameScene::Update(void) {
+	//for (int i = 0; i < 4; i++) {
+		//std::cout << LevelScene::param[i] << std::endl;
+	//}
+	player_life = LevelScene::param[0];
+
 	static MouseCoords mouseCoords(0, 0);
 	if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
 		mouseCoords = IM.GetMouseCoords();

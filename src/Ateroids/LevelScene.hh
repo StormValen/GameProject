@@ -4,6 +4,7 @@
 // GameScene class with the main gameplay mode
 class LevelScene : public Scene {
 public:
+	static std::vector<int> param;
 	explicit LevelScene();
 	~LevelScene() override;
 	void OnEntry(void) override;

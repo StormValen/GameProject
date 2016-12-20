@@ -7,6 +7,9 @@
 #include "GameScene.hh"
 using namespace Logger;
 
+
+std::vector<int> LevelScene::param;
+
 LevelScene::LevelScene(void) {
 	m_background.transform = { 0, 0, W.GetWidth(), W.GetHeight() };
 	m_background.objectID = ObjectID::BG_01;
@@ -30,6 +33,10 @@ void LevelScene::Update(void) {
 		if (mouseCoords.x < 370 && mouseCoords.x > 224 && mouseCoords.y < 186 && mouseCoords.y > 131) {
 			//Cargar fichero xml
 			Xml("easyMode.xml");
+			for (int i = 0; i < 4; i++) {
+				std::cout << param[i] << std::endl;
+			}
+			
 			SM.SetCurScene<GameScene>();
 
 			//Println("easy");
