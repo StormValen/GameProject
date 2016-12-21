@@ -79,7 +79,7 @@ void GameScene::Update(void) {
 		frames = 0;
 	}
 	Colision();
-	//ColisionSHOOT();    //CRASHEA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	ColisionSHOOT();    //CRASHEA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	frames++;frames_ship++;frequencia++; //Actualizacion de las variables temporales frames.
 }
 

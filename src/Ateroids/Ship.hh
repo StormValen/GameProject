@@ -39,7 +39,6 @@ public:
 			float B = sin(ship_angle*PI / 180);
 			transform.x += B * 10;
 			transform.y -= A * 10;
-
 			if (transform.y >= 400)transform.y = 0;
 			else if (transform.y <= 0)transform.y = 400;
 			else if (transform.x >= 600)transform.x = 0;
@@ -49,6 +48,7 @@ public:
 			SM.SetCurScene<MenuScene>();
 		}
 	}
+	float Angle() { return ship_angle; }
 	void RotateRight() {
 		ship_angle += 5;
 		if (ship_angle >= 360)ship_angle = 0;

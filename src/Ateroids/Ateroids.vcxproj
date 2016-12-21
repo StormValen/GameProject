@@ -35,6 +35,7 @@
     <ClInclude Include="Scene.hh" />
     <ClInclude Include="SceneManager.hh" />
     <ClInclude Include="Ship.hh" />
+    <ClInclude Include="Shoot.hh" />
     <ClInclude Include="Sprite.hh" />
     <ClInclude Include="System.hh" />
     <ClInclude Include="TimeManager.hh" />

@@ -96,6 +96,9 @@
     <ClInclude Include="Asteroid.hh">
       <Filter>Model</Filter>
     </ClInclude>
+    <ClInclude Include="Shoot.hh">
+      <Filter>Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cc" />
