@@ -15,14 +15,11 @@ public:
 		shoot_angle = s.Angle();
 		objectID = ObjectID::SHOOT;
 	}
-	void Update(Ship s) {
-		objectID = ObjectID::SHOOT;
-	}
-	void Movement() {
+	void Movement() { //Movimiento de la nave segun su angulo.
 		float A = cos(shoot_angle*PI / 180);
 		float B = sin(shoot_angle*PI / 180);
-		transform.x += B * 10;
-		transform.y -= A * 10;
+		transform.x += (B * 10);
+		transform.y -= (A * 10);
 	}
 	
 	virtual void Draw() { R.Push(objectID, transform); };

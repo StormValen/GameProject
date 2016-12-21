@@ -19,23 +19,16 @@ public:
 		Asteroid nuevo_asteroide(0); //Generador de asteroides, tamaño grande.
 		Asts.push_back(nuevo_asteroide); //Se añade al contenedor de la clase.
 	}
-
-	void AddSHOOT() {
-		Shoot nuevo_shoot(ship);
-		Shoots.push_back(nuevo_shoot);
-	}
-
-	void DeleteAST(int pos) {	//Destructor de los asteroides, (Todavia por definir) -> NO EXISTEN COLISIONES.	
+	void DeleteAST(int pos) { //Destruye el asteroide y genera dos del nivel inferior.
 		int D = (Asts[pos].dim) + 1;
-		if (pos == 0)Asts.erase(Asts.begin());
-		else Asts.erase(Asts.begin() + (pos));
-		
 		if (D < 3) {
 			for (int i = 0; i < 2; i++) {
-					Asteroid nuevo_asteroide(D);
+					Asteroid nuevo_asteroide(D,Asts[pos].transform.x, Asts[pos].transform.y ); //Asteroides nuevos.
 					Asts.push_back(nuevo_asteroide);
 			}
 		}
+		if (pos == 0)Asts.erase(Asts.begin()); //Destruccion del asteroide contactado.
+		else Asts.erase(Asts.begin() + (pos)); //
 		switch (D) {	//Sistema de puntuaciones.
 		case 0:m_score += 20;break;		//Grande.
 		case 1:m_score += 50;break;		//Mediano.
@@ -43,63 +36,15 @@ public:
 		default: break;
 		}
 	}
-	void Colision() {
-		for (int i = 0; i < Asts.size(); i++) {
-			if (Asts[i].dim == 0) {
-				if (ship.transform.x > Asts[i].x && ship.transform.x < Asts[i].x + 90 && ship.transform.y > Asts[i].y && ship.transform.y < Asts[i].y + 90) {
-					player_life -= 1;
-					ship.transform.x = 300;
-					ship.transform.y = 200;
-				}
-			}
-			else if (Asts[i].dim == 1) {
-				if (ship.transform.x > Asts[i].x && ship.transform.x < Asts[i].x + 60 && ship.transform.y > Asts[i].y && ship.transform.y < Asts[i].y + 60) {
-					player_life -= 1;
-					ship.transform.x = 300;
-					ship.transform.y = 200;
-				}
-			}
-			else if (Asts[i].dim == 2) {
-				if (ship.transform.x > Asts[i].x && ship.transform.x < Asts[i].x + 30 && ship.transform.y > Asts[i].y && ship.transform.y < Asts[i].y + 30) {
-					player_life -= 1;
-					ship.transform.x = 300;
-					ship.transform.y = 200;
-				}
-			}
-		}
-		if (player_life <= 0) {
-			player_life = num_ovnis = ovnis_velocity = increment_ovnis = -1; //Cuando el jugador se queda sin vidas , se limpian todas las variables para que no carguen cosas erroneas en partidas posteriores.
-			Asts.clear();
-			m_score = 0;
-			LevelScene::param.clear();
-			SM.SetCurScene<MenuScene>();
-		}
+	void AddSHOOT() {
+		Shoot nuevo_shoot(ship); //Generado de Disparos.
+		Shoots.push_back(nuevo_shoot); //Se añade al contenedor de disparos.
 	}
-	void ColisionSHOOT(){
-		for (int i = 0; i < Asts.size(); i++) {
-			for (int j = 0; j < Shoots.size(); j++) {
-				if (Asts[i].dim == 0) {
-					if (Shoots[i].transform.x > Asts[i].x && Shoots[i].transform.x < Asts[i].x + 90 && Shoots[i].transform.y > Asts[i].y && Shoots[i].transform.y < Asts[i].y + 90) {
-						std::cout << "HIT" << std::endl;
-						DeleteAST(i);
-					}
-				}
-				else if (Asts[i].dim == 1) {
-					if (Shoots[i].transform.x > Asts[i].x && Shoots[i].transform.x < Asts[i].x + 60 && Shoots[i].transform.y > Asts[i].y && Shoots[i].transform.y < Asts[i].y + 60) {
-						std::cout << "HIT" << std::endl;
-						DeleteAST(i);
-					}
-				}
-				else if (Asts[i].dim == 2) {
-					if (Shoots[i].transform.x > Asts[i].x && Shoots[i].transform.x < Asts[i].x + 30 && Shoots[i].transform.y > Asts[i].y && Shoots[i].transform.y < Asts[i].y + 30) {
-						std::cout << "HIT" << std::endl;
-						DeleteAST(i);
-					}
-				}
-			}
-		}
+	void DeleteSHOOT(int pos) { //Destructor de disparos.
+		if (pos == 0)Shoots.erase(Shoots.begin());
+		else Shoots.erase(Shoots.begin() + (pos));
 	}
-	void DeleteSHOOT() {
+	void OutSHOOT() { //Comprovacion si los disparon han salido de los limites de la pantalla.
 		if (Shoots.size() > 1) {
 			for (int i = 0; i < Shoots.size(); i++) {
 				if (Shoots[i].transform.x < 0)Shoots.erase(Shoots.begin());
@@ -109,6 +54,62 @@ public:
 			}
 		}
 	}
+	void ColisionSHIP() {
+		for (int i = 0; i < Asts.size(); i++) {
+			if (Asts[i].dim == 0) { //Recolocacion de la nave cuando ha colisionado con un asteroide grande.
+				if (ship.transform.x > Asts[i].x && ship.transform.x < Asts[i].x + 90 && ship.transform.y > Asts[i].y && ship.transform.y < Asts[i].y + 90) {
+					player_life -= 1; 
+					ship.transform.x = 300;
+					ship.transform.y = 200;	
+				}
+			}
+			else if (Asts[i].dim == 1) { //Recolocacion de la nave cuando ha colisionado con un asteroide mediano.
+				if (ship.transform.x > Asts[i].x && ship.transform.x < Asts[i].x + 60 && ship.transform.y > Asts[i].y && ship.transform.y < Asts[i].y + 60) {
+					player_life -= 1;
+					ship.transform.x = 300;
+					ship.transform.y = 200;
+				}
+			}
+			else if (Asts[i].dim == 2) { //Recolocacion de la nave cuando ha colisionado con un asteroide pequeño.
+				if (ship.transform.x > Asts[i].x && ship.transform.x < Asts[i].x + 30 && ship.transform.y > Asts[i].y && ship.transform.y < Asts[i].y + 30) {
+					player_life -= 1;
+					ship.transform.x = 300;
+					ship.transform.y = 200;
+				}
+			}
+		}
+		if (player_life <= 0) { //Cuando el jugador se queda sin vidas , se limpian todas las variables para que no carguen cosas erroneas en partidas posteriores.
+			player_life = num_ovnis = ovnis_velocity = increment_ovnis = -1; 
+			Asts.clear();
+			m_score = 0;
+			LevelScene::param.clear();
+			SM.SetCurScene<MenuScene>();
+		}
+	}
+	void ColisionSHOOT(){
+		for (int i = 0; i < Asts.size(); i++) {
+			for (int j = 0; j < Shoots.size(); j++) {
+				if (Asts[i].dim == 0) {	//Comprovacion si los disparos chocan con asteroides grandes.
+					if (Shoots[j].transform.x > Asts[i].x && Shoots[j].transform.x < Asts[i].x + 90 && Shoots[j].transform.y > Asts[i].y && Shoots[j].transform.y < Asts[i].y + 90) {
+						DeleteAST(i);
+						DeleteSHOOT(j);
+					}
+				}
+				else if (Asts[i].dim == 1) { //Comprovacion si los disparos chocan con asteroides medianos.
+					if (Shoots[j].transform.x > Asts[i].x && Shoots[j].transform.x < Asts[i].x + 60 && Shoots[j].transform.y > Asts[i].y && Shoots[j].transform.y < Asts[i].y + 60) {
+						DeleteAST(i);
+						DeleteSHOOT(j);
+					}
+				}
+				else if (Asts[i].dim == 2) { //Comprovacion si los disparos chocan con asteroides pequeños.
+					if (Shoots[j].transform.x > Asts[i].x && Shoots[j].transform.x < Asts[i].x + 30 && Shoots[j].transform.y > Asts[i].y && Shoots[j].transform.y < Asts[i].y + 30) {
+						DeleteAST(i);
+						DeleteSHOOT(j);
+					}
+				}
+			}
+		}
+	}	
 private:
 	std::vector<Asteroid> Asts;	//Contenedor de los asteroides que se van creando.
 	std::vector<Shoot> Shoots; //Contenedor de los disparos.

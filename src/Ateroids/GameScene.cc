@@ -8,6 +8,7 @@
 using namespace Logger;
 
 GameScene::GameScene(void){
+	std::cout << ">GameScene created" << std::endl;
 	m_background.transform = { 0, 0, W.GetWidth(), W.GetHeight() };
 	m_background.objectID = ObjectID::BG_00;
 	m_score = 0;
@@ -31,55 +32,47 @@ void GameScene::Update(void) {
 	
 	static MouseCoords mouseCoords(0, 0);
 		
-	if (frequencia == 30000) { //TEMPORAL -> l update se actualiza demasiado rapido.
+	if (frequencia == 3000) { //TEMPORAL -> l update se actualiza demasiado rapido.
 		AddAST();
 		frequencia = 0;
+		std::cout << ">Asteroid created" << std::endl;
 	}
-		
-	//if (IM.IsKeyDown<KEY_BUTTON_LCTRL>()) { //Funcion TEMPORAL para destruir asteroides.
-		//DeleteAST(0);
-	//}
 
 	if (IM.IsKeyDown<KEY_BUTTON_TAB>()) { //Funcion TEMPORAL para destruir asteroides.
-		std::cout << "Pium" << std::endl;
 		AddSHOOT();
-		std::cout << Shoots.size() << std::endl;
 	}
 
 	if (IM.IsKeyHold<KEY_BUTTON_UP>()) {
-		if (frames_ship >= 100) { //TEMPORAL -> l update se actualiza demasiado rapido.
+		if (frames_ship >= 50) { //TEMPORAL -> l update se actualiza demasiado rapido.
 			ship.Movement();
 			frames_ship = 0;
 		}
 	}
 	if (IM.IsKeyHold<KEY_BUTTON_RIGHT>()) {
-		if (frames_ship >= 20) { //TEMPORAL -> l update se actualiza demasiado rapido.
+		if (frames_ship >= 10) { //TEMPORAL -> l update se actualiza demasiado rapido.
 			ship.RotateRight();
 			frames_ship = 0;
 		}
 	}
 	if (IM.IsKeyHold<KEY_BUTTON_LEFT>()) {
-		if (frames_ship >= 20) { //TEMPORAL -> l update se actualiza demasiado rapido.
+		if (frames_ship >= 10) { //TEMPORAL -> l update se actualiza demasiado rapido.
 			ship.RotateLeft();
 			frames_ship = 0;
 		}
 	}
-	if (frames >= 50) { //TEMPORAL -> l update se actualiza demasiado rapido.
+	if (frames >= 25) { //TEMPORAL -> l update se actualiza demasiado rapido.
 		for (int i = 0; i < Asts.size(); i++) {
 			Asts[i].Movement();
 			Asts[i].Update();
 		}
 		for (int i = 0; i < Shoots.size(); i++) {
-			Shoots[i].Update(ship);
 			Shoots[i].Movement();
-			if (Shoots.size() != 0) {
-				DeleteSHOOT();
-			}
+			OutSHOOT();
 		}
 		frames = 0;
 	}
-	Colision();
-	//ColisionSHOOT();    //CRASHEA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	ColisionSHIP();
+	ColisionSHOOT(); 
 	frames++;frames_ship++;frequencia++; //Actualizacion de las variables temporales frames.
 }
 

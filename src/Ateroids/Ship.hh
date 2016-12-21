@@ -37,8 +37,8 @@ public:
 		if (alive == true) {
 			float A = cos(ship_angle*PI / 180);
 			float B = sin(ship_angle*PI / 180);
-			transform.x += B * 10;
-			transform.y -= A * 10;
+			transform.x += (B * 10)*TM.GetDeltaTime();
+			transform.y -= (A * 10)*TM.GetDeltaTime();
 			if (transform.y >= 400)transform.y = 0;
 			else if (transform.y <= 0)transform.y = 400;
 			else if (transform.x >= 600)transform.x = 0;

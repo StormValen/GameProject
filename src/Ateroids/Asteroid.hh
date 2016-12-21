@@ -24,6 +24,18 @@ public:
 		}
 		
 	}
+	Asteroid(int dim, int x, int y) :dim(dim), x(x), y(y) {
+		velocity = 1;
+		dir = rand() % 8;
+
+		switch (dim) {//Switch que difine el sprite del asteroide segun su dimension.
+		case 0:transform = { x,y, 90,90 }; objectID = ObjectID::GREAT_AST; break;
+		case 1:transform = { x,y,60,60 }; objectID = ObjectID::MIDDLE_AST; break;
+		case 2:transform = { x,y, 30,30 }; objectID = ObjectID::LITTLE_AST; break;
+		default:break;
+		}
+
+	}
 	~Asteroid() {
 	}
 	void Update() {
