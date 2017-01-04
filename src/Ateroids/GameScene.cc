@@ -13,6 +13,10 @@ GameScene::GameScene(void){
 	m_background.objectID = ObjectID::BG_00;
 	m_score = 0;
 	player_life = num_ovnis = ovnis_velocity = increment_ovnis = -1; //-1 simboliza que aun no se ha asignado ningun dato de XML.
+	top[0] = 3000;
+	top[1] = 25;
+	top[2] = 50;
+	top[3] = 10;
 }
 
 GameScene::~GameScene(void) {
@@ -31,36 +35,88 @@ void GameScene::Update(void) {
 	if (increment_ovnis == -1)increment_ovnis = LevelScene::param[3];
 	
 	static MouseCoords mouseCoords(0, 0);
-		
-	if (frequencia == 3000) { //TEMPORAL -> l update se actualiza demasiado rapido.
-		AddAST();
-		frequencia = 0;
-		std::cout << ">Asteroid created" << std::endl;
+
+	//CONTROL VELOCIDADES
+	if (IM.IsKeyDown<KEY_BUTTON_U>()) {//Disminuir velocidad de rotacion de la nave
+		top[3] += 1;
+		std::cout << top[3] << std::endl;
+	}
+	if (IM.IsKeyDown<KEY_BUTTON_H>()) {//Augmentar velocidad de rotacion de la nave 
+		top[3] -= 1;
+		std::cout << top[3] << std::endl;
+	}
+	if (IM.IsKeyDown<KEY_BUTTON_I>()) {//Augmentar velocidad de aparicion asteroides
+		top[0] += 200;
+		std::cout << top[0] << std::endl;
+	}
+	if (IM.IsKeyDown<KEY_BUTTON_J>()) {//Disminuir velocidad de aparicion asteroides
+		top[0] -= 200;
+		std::cout << top[0] << std::endl;
+	}
+	if (IM.IsKeyDown<KEY_BUTTON_O>()) {//Disminuir velocidad de movimiento de asteroides y disparos
+		top[1] += 1;
+		std::cout << top[1] << std::endl;
+	}
+	if (IM.IsKeyDown<KEY_BUTTON_K>()) {//Augmentar velocidad de movimiento de asteroides y disparos
+		top[1] -= 1;
+		std::cout << top[1] << std::endl;
+	}
+	if (IM.IsKeyDown<KEY_BUTTON_P>()) {//Disminuir velocidad de movimiento de la nave
+		top[2] += 5;
+		std::cout << top[2] << std::endl;
+
+	}
+	if (IM.IsKeyDown<KEY_BUTTON_L>()) {//Augmentar velocidad de movimiento de la nave
+		top[2] -= 5;
+		std::cout << top[2] << std::endl;
 	}
 
-	if (IM.IsKeyDown<KEY_BUTTON_TAB>()) { //Funcion TEMPORAL para destruir asteroides.
+
+	//HABILIDADES
+	if (IM.IsKeyDown<KEY_BUTTON_TAB>()) { 
 		AddSHOOT();
+		std::cout << ">Shoot" << std::endl;
 	}
 
+	if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
+		AddSHOOT();
+		std::cout << ">Shoot" << std::endl;
+	}
+
+	if (IM.IsKeyDown<KEY_BUTTON_LALT>()) {
+		ship.Hyperespacio();
+		std::cout << ">Hyperspace" << std::endl;
+	}
+
+
+	//CONTROLES NAVE
 	if (IM.IsKeyHold<KEY_BUTTON_UP>()) {
-		if (frames_ship >= 50) { //TEMPORAL -> l update se actualiza demasiado rapido.
+		if (frames_ship >= top[2]) { //TEMPORAL -> l update se actualiza demasiado rapido.
 			ship.Movement();
 			frames_ship = 0;
 		}
 	}
+
 	if (IM.IsKeyHold<KEY_BUTTON_RIGHT>()) {
-		if (frames_ship >= 10) { //TEMPORAL -> l update se actualiza demasiado rapido.
+		if (frames_ship >= top[3]) { //TEMPORAL -> l update se actualiza demasiado rapido.
 			ship.RotateRight();
 			frames_ship = 0;
 		}
 	}
 	if (IM.IsKeyHold<KEY_BUTTON_LEFT>()) {
-		if (frames_ship >= 10) { //TEMPORAL -> l update se actualiza demasiado rapido.
+		if (frames_ship >= top[3]) { //TEMPORAL -> l update se actualiza demasiado rapido.
 			ship.RotateLeft();
 			frames_ship = 0;
 		}
 	}
-	if (frames >= 25) { //TEMPORAL -> l update se actualiza demasiado rapido.
+
+	if (frequencia == top[0]) { //TEMPORAL -> l update se actualiza demasiado rapido.
+		AddAST();
+		frequencia = 0;
+		std::cout << ">Asteroid created" << std::endl;
+	}
+
+	if (frames >= top[1]) { //TEMPORAL -> l update se actualiza demasiado rapido.
 		for (int i = 0; i < Asts.size(); i++) {
 			Asts[i].Movement();
 			Asts[i].Update();
@@ -70,7 +126,8 @@ void GameScene::Update(void) {
 			OutSHOOT();
 		}
 		frames = 0;
-	}
+	}	
+
 	ColisionSHIP();
 	ColisionSHOOT(); 
 	frames++;frames_ship++;frequencia++; //Actualizacion de las variables temporales frames.

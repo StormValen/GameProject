@@ -125,4 +125,11 @@ private:
 	int frequencia;		//TEMP
 	int frames;			//TEMP
 	int frames_ship;	//TEMP
+
+	int top[4];
+
+	// [0] I+  J-	augmentar/disminuir valores > aparicion asteroides
+	// [1] O+  K-	augmentar/disminuir valores > movimiento asteroides y disparos
+	// [2] P+  L-	augmentar/disminuir valores > avance de la nave
+	// [3] U+  H-   augmentar/disminuir valores > rotacion de la nave
 };

@@ -32,6 +32,10 @@ public:
 	void dead() {
 			alive = false;
 	}
+	void Hyperespacio() {
+		transform.x = rand() % 600;
+		transform.y = rand() % 400;
+	}
 	void Movement()
 	{
 		if (alive == true) {

@@ -39,6 +39,15 @@ enum KeyButton : int {
 	KEY_BUTTON_RALT = SDLK_RALT,
 	KEY_BUTTON_LSHIFT = SDLK_LSHIFT,
 	KEY_BUTTON_RSHIFT = SDLK_RSHIFT,
+
+	KEY_BUTTON_U = SDLK_u,
+	KEY_BUTTON_H = SDLK_h,
+	KEY_BUTTON_I = SDLK_i,
+	KEY_BUTTON_J = SDLK_j,
+	KEY_BUTTON_O = SDLK_o,
+	KEY_BUTTON_K = SDLK_k,
+	KEY_BUTTON_P = SDLK_p,
+	KEY_BUTTON_L = SDLK_l,
 };
 
 //! Controls all input info and stores it to be used in other pats of the code as a Singleton.
