@@ -3,6 +3,7 @@
 #include "Logger.hh"
 #include "MenuScene.hh"
 #include "LevelScene.hh"
+
 using namespace Logger;
 
 MenuScene::MenuScene(void) {

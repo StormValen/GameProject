@@ -30,6 +30,7 @@
     <ClInclude Include="LevelScene.hh" />
     <ClInclude Include="Logger.hh" />
     <ClInclude Include="MenuScene.hh" />
+    <ClInclude Include="Ranking.hh" />
     <ClInclude Include="Renderer.hh" />
     <ClInclude Include="Resource.hh" />
     <ClInclude Include="Scene.hh" />

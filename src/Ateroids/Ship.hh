@@ -5,6 +5,7 @@
 #include "Transform.hh"
 #include <math.h>
 
+
 #define PI 3.14159265
 
 using namespace std;
@@ -12,9 +13,9 @@ using namespace std;
 
 class  Ship : public Sprite {
 	int ship_speed;
+public:
 	float ship_angle;
 	bool alive = true;
-public:
 	Ship()
 	{
 		transform = { 300,200, 20,25 };
@@ -29,9 +30,6 @@ public:
 	}
 
 	bool isAlive() { return alive; }
-	void dead() {
-			alive = false;
-	}
 	void Hyperespacio() {
 		transform.x = rand() % 600;
 		transform.y = rand() % 400;
@@ -47,9 +45,6 @@ public:
 			else if (transform.y <= 0)transform.y = 400;
 			else if (transform.x >= 600)transform.x = 0;
 			else if (transform.x <= 0)transform.x = 600;
-		}
-		else {
-			SM.SetCurScene<MenuScene>();
 		}
 	}
 	float Angle() { return ship_angle; }

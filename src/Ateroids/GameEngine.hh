@@ -14,6 +14,7 @@ namespace GameEngine {
 		R.LoadFont<FontID::ARIAL>("fnt/arial.ttf", 40);
 		R.LoadFont<FontID::ASTEROIDS>("fnt/Hyperspace.otf", 50);
 		R.LoadFont<FontID::ASTEROIDS01>("fnt/Hyperspace.otf", 20);
+		R.LoadFont<FontID::ASTEROIDS02>("fnt/Hyperspace.otf", 15);
 		R.LoadFont<FontID::FACTORY>("fnt/candsb.ttf", 80);
 	
 		R.LoadTexture < ObjectID::GREAT_AST>("gfx/gast.png");
@@ -23,10 +24,11 @@ namespace GameEngine {
 		R.LoadTexture < ObjectID::SHOOT>("gfx/shot.png");
 		R.LoadTexture<ObjectID::BG_00>("gfx/bg.jpg");
 		R.LoadTexture<ObjectID::BG_01>("gfx/bg0.jpg");
+		R.LoadTexture<ObjectID::BG_02>("gfx/bgpause.png");
 	}
 	//! Adds the game scenes into the Scene Manager and decides which is the first screen
 	void AddScenes(void) {
-		SM.AddScene<MenuScene>();	//FALTA AÑADIR LA ESCENA DEL JUEGO (POR CREAR)
+		SM.AddScene<MenuScene>();
 		SM.AddScene<LevelScene>();
 		SM.AddScene<GameScene>();
 		SM.SetCurScene<MenuScene>();

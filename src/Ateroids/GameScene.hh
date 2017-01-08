@@ -4,6 +4,14 @@
 #include "Ship.hh"
 #include "Shoot.hh"
 #include <vector>
+#include "LevelScene.hh"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include "Ranking.hh"
+
+
+using namespace std;
 
 //Escena principal de juego.
 class GameScene : public Scene {
@@ -78,13 +86,6 @@ public:
 				}
 			}
 		}
-		if (player_life <= 0) { //Cuando el jugador se queda sin vidas , se limpian todas las variables para que no carguen cosas erroneas en partidas posteriores.
-			player_life = num_ovnis = ovnis_velocity = increment_ovnis = -1; 
-			Asts.clear();
-			m_score = 0;
-			LevelScene::param.clear();
-			SM.SetCurScene<MenuScene>();
-		}
 	}
 	void ColisionSHOOT(){
 		for (int i = 0; i < Asts.size(); i++) {
@@ -109,14 +110,18 @@ public:
 				}
 			}
 		}
-	}	
+	}
+
 private:
+	int m_score; //Puntuacion de la partida, se debe guardar en el archivo de ranking.
 	std::vector<Asteroid> Asts;	//Contenedor de los asteroides que se van creando.
 	std::vector<Shoot> Shoots; //Contenedor de los disparos.
 	Sprite m_background;
+	Sprite m_background2;
+	Sprite m_background3;
 	Ship ship;
 
-	int m_score; //Puntuacion de la partida, se debe guardar en un archivo externo.
+	
 	int player_life, num_ovnis, increment_ovnis; //Varibles leidas de xml segun el nivel escogido.
 	float ovnis_velocity;
 
@@ -132,4 +137,6 @@ private:
 	// [1] O+  K-	augmentar/disminuir valores > movimiento asteroides y disparos
 	// [2] P+  L-	augmentar/disminuir valores > avance de la nave
 	// [3] U+  H-   augmentar/disminuir valores > rotacion de la nave
+	Ranking rkg;
+	bool pause;
 };
