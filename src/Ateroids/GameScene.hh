@@ -120,10 +120,12 @@ private:
 	Sprite m_background2;
 	Sprite m_background3;
 	Ship ship;
+	int progLevel;
+	int topScoreToChangeVel;
 
 	
-	int player_life, num_ovnis, velocidadNivel; //Varibles leidas de xml segun el nivel escogido.
-	float ovnis_velocity;
+	int player_life, starterEnem, velocidadNivel, enemIncrement; //Varibles leidas de xml segun el nivel escogido.
+
 
 	//La frequencia de actualizacion del update del gameScene es damasiado alta y se llama a la funciones movimiento de cada emento demasiadas veces, por lo que se mueve muy rapido.
 	//Saltarse algunas iteraciones del update es una solucion temporal, ya que en funcion de la maquina en la que se esté ejecutando el programa el update se hara mas rapido o as lento.

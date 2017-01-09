@@ -17,11 +17,13 @@ GameScene::GameScene(void){
 	m_background3.objectID = ObjectID::BG_02;
 	m_score = 0;
 	velocitySet = false;
-	player_life = num_ovnis = ovnis_velocity = velocidadNivel = -1; //-1 simboliza que aun no se ha asignado ningun dato de XML.
-	top[0] = 10000;
-	top[1] = 100;
+	progLevel = 1;
+	topScoreToChangeVel = 1000;
+	player_life = starterEnem = enemIncrement = velocidadNivel = -1; //-1 simboliza que aun no se ha asignado ningun dato de XML.
+	top[0] = 3000;
+	top[1] = 25;
 	top[2] = 50;
-	top[3] = 30;
+	top[3] = 10;
 	pause = false;
 }
 
@@ -36,8 +38,8 @@ void GameScene::OnExit(void) {
 
 void GameScene::Update(void) {
 	if (player_life == -1)player_life = LevelScene::param[0];	//Asignacion de las variables ledias de XML.
-	if (num_ovnis == -1)num_ovnis = LevelScene::param[1];
-	if (ovnis_velocity == -1)ovnis_velocity = LevelScene::param[2];
+	if (starterEnem == -1)starterEnem = LevelScene::param[1];
+	if (enemIncrement == -1)enemIncrement = LevelScene::param[2];
 	if (velocidadNivel == -1)velocidadNivel = LevelScene::param[3];
 
 	static MouseCoords mouseCoords(0, 0);
@@ -56,12 +58,13 @@ void GameScene::Update(void) {
 	
 	if (pause == false) {
 		if (player_life != 0) {
-			//
+			
 
-			if (m_score > 1000 && velocitySet == false) {
+			if (m_score > topScoreToChangeVel && velocitySet == false) {
 				for (int i = 0; i < Asts.size(); i++) {
 					Asts[i].velocity++;
 				}
+				topScoreToChangeVel += 1000;
 				velocitySet = true;
 			}
 
@@ -73,14 +76,6 @@ void GameScene::Update(void) {
 			if (IM.IsKeyDown<KEY_BUTTON_H>()) {//Augmentar velocidad de rotacion de la nave 
 				top[3] -= 1;
 				std::cout << top[3] << std::endl;
-			}
-			if (IM.IsKeyDown<KEY_BUTTON_I>()) {//Augmentar velocidad de aparicion asteroides
-				top[0] += 200;
-				std::cout << top[0] << std::endl;
-			}
-			if (IM.IsKeyDown<KEY_BUTTON_J>()) {//Disminuir velocidad de aparicion asteroides
-				top[0] -= 200;
-				std::cout << top[0] << std::endl;
 			}
 			if (IM.IsKeyDown<KEY_BUTTON_O>()) {//Disminuir velocidad de movimiento de asteroides y disparos
 				top[1] += 1;
@@ -102,9 +97,12 @@ void GameScene::Update(void) {
 
 
 			//HABILIDADES
-			if (IM.IsKeyDown<KEY_BUTTON_TAB>()) {
-				AddSHOOT();
+			if (Shoots.size() < 3) {
+				if (IM.IsKeyDown<KEY_BUTTON_TAB>()) {
+					AddSHOOT();
+				}
 			}
+			
 
 			if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
 				AddSHOOT();
@@ -136,9 +134,14 @@ void GameScene::Update(void) {
 				}
 			}
 
-			if (frequencia == top[0]) {
-				AddAST();
-				frequencia = 0;
+
+			if (Asts.empty()) {
+				std::cout << ">Level clear - Level "<< progLevel << " loaded" << std::endl;
+				int A = starterEnem + enemIncrement*progLevel;
+				for (int i = 0; i < A; i++) {
+					AddAST();
+				}
+				progLevel++;
 			}
 
 			if (frames >= top[1]) {
@@ -162,7 +165,7 @@ void GameScene::Update(void) {
 			if (IM.IsKeyDown<KEY_BUTTON_ENTER>()) {
 				SM.SetCurScene<MenuScene>();
 				if (player_life <= 0) { //Cuando el jugador se queda sin vidas , se limpian todas las variables para que no carguen cosas erroneas en partidas posteriores.
-					player_life = num_ovnis = ovnis_velocity = velocidadNivel = -1;
+					player_life = starterEnem = enemIncrement = velocidadNivel = -1;
 					Asts.clear();
 					m_score = 0;
 					ship.ship_angle = 0.0;
