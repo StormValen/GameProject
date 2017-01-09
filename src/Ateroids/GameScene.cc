@@ -37,7 +37,7 @@ void GameScene::OnExit(void) {
 }
 
 void GameScene::Update(void) {
-	if (player_life == -1)player_life = LevelScene::param[0];	//Asignacion de las variables ledias de XML.
+	if (player_life == -1)player_life = LevelScene::param[0];	//Asignacion de las variables leidas de XML.
 	if (starterEnem == -1)starterEnem = LevelScene::param[1];
 	if (enemIncrement == -1)enemIncrement = LevelScene::param[2];
 	if (velocidadNivel == -1)velocidadNivel = LevelScene::param[3];

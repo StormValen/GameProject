@@ -3,7 +3,7 @@
 #include <functional>
 
 #define SCREEN_FPS 60.0f
-#define SCREEN_TICKS_PER_FRAME (0.0f / SCREEN_FPS)
+#define SCREEN_TICKS_PER_FRAME (1.0f / SCREEN_FPS)
 
 #define TM TimeManager::Instance()
 
