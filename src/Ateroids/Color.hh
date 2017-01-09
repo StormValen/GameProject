@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL.h>
 
-// Color structure used for UIObject purposes
+//Estructura de color para UIObject.
 struct Color {
 	union {
 		SDL_Color col;

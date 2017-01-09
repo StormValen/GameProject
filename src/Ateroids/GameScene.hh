@@ -113,33 +113,16 @@ public:
 	}
 
 private:
-	int m_score; //Puntuacion de la partida, se debe guardar en el archivo de ranking.
+	int m_score; //Puntuacion de la partida.
 	std::vector<Asteroid> Asts;	//Contenedor de los asteroides que se van creando.
 	std::vector<Shoot> Shoots; //Contenedor de los disparos.
-	Sprite m_background;
-	Sprite m_background2;
-	Sprite m_background3;
-	Ship ship;
-	int progLevel;
-	int topScoreToChangeVel;
 
-	
-	int player_life, starterEnem, velocidadNivel, enemIncrement; //Varibles leidas de xml segun el nivel escogido.
+	Sprite m_background, m_background2, m_background3;	//3 backgrounds usados en el GameScene - game, pause y ranking.
+	Ship ship;	//Objeto nave.
+	Ranking rkg; //Objeto ranking
+	//El objeto ranking se sobreescribe cada vez que se guarda partida, ya que es un array estatico y no es posible 
+	//simplemente añadir una nueva posicion.
 
-
-	//La frequencia de actualizacion del update del gameScene es damasiado alta y se llama a la funciones movimiento de cada emento demasiadas veces, por lo que se mueve muy rapido.
-	//Saltarse algunas iteraciones del update es una solucion temporal, ya que en funcion de la maquina en la que se esté ejecutando el programa el update se hara mas rapido o as lento.
-	int frequencia;		//TEMP
-	int frames;			//TEMP
-	int frames_ship;	//TEMP
-
-	int top[4];
-
-	// [0] I+  J-	augmentar/disminuir valores > aparicion asteroides
-	// [1] O+  K-	augmentar/disminuir valores > movimiento asteroides y disparos
-	// [2] P+  L-	augmentar/disminuir valores > avance de la nave
-	// [3] U+  H-   augmentar/disminuir valores > rotacion de la nave
-	Ranking rkg;
-	bool pause;
-	bool velocitySet;
+	int player_life, starterEnem, velocidadNivel, enemIncrement, progLevel, topScoreToChangeVel; //Varibles leidas de xml segun el nivel escogido.
+	bool pause; //Variable que controla si el pause esta activo.
 };

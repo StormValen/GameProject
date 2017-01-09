@@ -4,7 +4,7 @@
 #include "Renderer.hh"
 #include "Transform.hh"
 
-// Static GUI class for rendering UI Objects purposes
+//Clase GUI estatica para renderizar Objetos UI.
 class GUI {
 public:
 	template<FontID fontID>

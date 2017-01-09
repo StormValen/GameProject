@@ -9,21 +9,17 @@ using namespace Logger;
 
 GameScene::GameScene(void){
 	std::cout << ">GameScene created" << std::endl;
-	m_background.transform = { 0, 0, W.GetWidth(), W.GetHeight() };
+	m_background.transform = { 0, 0, W.GetWidth(), W.GetHeight() }; //Fondo de juego.
 	m_background.objectID = ObjectID::BG_00;
-	m_background2.transform = { 0, 0, W.GetWidth(), W.GetHeight() };
+	m_background2.transform = { 0, 0, W.GetWidth(), W.GetHeight() }; //Fondo de ranking.
 	m_background2.objectID = ObjectID::BG_01;
-	m_background3.transform = { 0, 0, W.GetWidth(), W.GetHeight() };
+	m_background3.transform = { 0, 0, W.GetWidth(), W.GetHeight() }; //Fondo de pause.
 	m_background3.objectID = ObjectID::BG_02;
+
 	m_score = 0;
-	velocitySet = false;
 	progLevel = 1;
 	topScoreToChangeVel = 1000;
 	player_life = starterEnem = enemIncrement = velocidadNivel = -1; //-1 simboliza que aun no se ha asignado ningun dato de XML.
-	top[0] = 3000;
-	top[1] = 25;
-	top[2] = 50;
-	top[3] = 10;
 	pause = false;
 }
 
@@ -44,96 +40,49 @@ void GameScene::Update(void) {
 
 	static MouseCoords mouseCoords(0, 0);
 
-	if (IM.IsKeyDown<KEY_BUTTON_ESCAPE>()) {
-		pause = !pause;
-	}
-
-
-	if (pause == true) {
+	if (IM.IsKeyDown<KEY_BUTTON_ESCAPE>())pause != pause; //Escape activa o desactiva el menu de pause.
+	
+	if (pause == true) {//PAUSE LOOP
 		if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
 			mouseCoords = IM.GetMouseCoords();
 			if (mouseCoords.x < 360 && mouseCoords.x > 240 && mouseCoords.y < 351 && mouseCoords.y > 288)SetState<SceneState::EXIT>();
 		}
 	}
 	
-	if (pause == false) {
-		if (player_life != 0) {
+	if (pause == false) {//GAME LOOP
+		if (player_life != 0) {//GAME LOOP (ALIVE)
 			
+			//HABILIDADES
+			if (IM.IsKeyDown<KEY_BUTTON_TAB>())AddSHOOT();
+			if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>())AddSHOOT();
+			if (IM.IsKeyDown<KEY_BUTTON_LALT>())ship.Hyperespacio();
 
-			if (m_score > topScoreToChangeVel && velocitySet == false) {
+			//CONTROLES NAVE
+			if (IM.IsKeyHold<KEY_BUTTON_UP>())ship.Movement();
+			if (IM.IsKeyHold<KEY_BUTTON_RIGHT>())ship.RotateRight();
+			if (IM.IsKeyHold<KEY_BUTTON_LEFT>())ship.RotateLeft();
+
+			//MOVIMIENTO OBJETOS
+			for (int i = 0; i < Asts.size(); i++) {
+				Asts[i].Movement();
+				Asts[i].Update();
+			}
+			for (int i = 0; i < Shoots.size(); i++) {
+				Shoots[i].Movement();
+				OutSHOOT();
+			}
+
+			//COLISIONES
+			ColisionSHIP();
+			ColisionSHOOT();
+
+			//ACTUALIZACION DL ESTADO DEL JUEGO (VELOCIDAD POR PUNTUACION & OLEADA COMPLETADA)
+			if (m_score > topScoreToChangeVel) {
 				for (int i = 0; i < Asts.size(); i++) {
 					Asts[i].velocity++;
 				}
 				topScoreToChangeVel += 1000;
-				velocitySet = true;
 			}
-
-			//CONTROL VELOCIDADES
-			if (IM.IsKeyDown<KEY_BUTTON_U>()) {//Disminuir velocidad de rotacion de la nave
-				top[3] += 1;
-				std::cout << top[3] << std::endl;
-			}
-			if (IM.IsKeyDown<KEY_BUTTON_H>()) {//Augmentar velocidad de rotacion de la nave 
-				top[3] -= 1;
-				std::cout << top[3] << std::endl;
-			}
-			if (IM.IsKeyDown<KEY_BUTTON_O>()) {//Disminuir velocidad de movimiento de asteroides y disparos
-				top[1] += 1;
-				std::cout << top[1] << std::endl;
-			}
-			if (IM.IsKeyDown<KEY_BUTTON_K>()) {//Augmentar velocidad de movimiento de asteroides y disparos
-				top[1] -= 1;
-				std::cout << top[1] << std::endl;
-			}
-			if (IM.IsKeyDown<KEY_BUTTON_P>()) {//Disminuir velocidad de movimiento de la nave
-				top[2] += 5;
-				std::cout << top[2] << std::endl;
-
-			}
-			if (IM.IsKeyDown<KEY_BUTTON_L>()) {//Augmentar velocidad de movimiento de la nave
-				top[2] -= 5;
-				std::cout << top[2] << std::endl;
-			}
-
-
-			//HABILIDADES
-			if (Shoots.size() < 3) {
-				if (IM.IsKeyDown<KEY_BUTTON_TAB>()) {
-					AddSHOOT();
-				}
-			}
-			
-
-			if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
-				AddSHOOT();
-			}
-
-			if (IM.IsKeyDown<KEY_BUTTON_LALT>()) {
-				ship.Hyperespacio();
-			}
-
-
-			//CONTROLES NAVE
-			if (IM.IsKeyHold<KEY_BUTTON_UP>()) {
-				if (frames_ship >= top[2]) {
-					ship.Movement();
-					frames_ship = 0;
-				}
-			}
-
-			if (IM.IsKeyHold<KEY_BUTTON_RIGHT>()) {
-				if (frames_ship >= top[3]) {
-					ship.RotateRight();
-					frames_ship = 0;
-				}
-			}
-			if (IM.IsKeyHold<KEY_BUTTON_LEFT>()) {
-				if (frames_ship >= top[3]) {
-					ship.RotateLeft();
-					frames_ship = 0;
-				}
-			}
-
 
 			if (Asts.empty()) {
 				std::cout << ">Level clear - Level "<< progLevel << " loaded" << std::endl;
@@ -144,53 +93,41 @@ void GameScene::Update(void) {
 				progLevel++;
 			}
 
-			if (frames >= top[1]) {
-				for (int i = 0; i < Asts.size(); i++) {
-					Asts[i].Movement();
-					Asts[i].Update();
-				}
-				for (int i = 0; i < Shoots.size(); i++) {
-					Shoots[i].Movement();
-					OutSHOOT();
-				}
-				frames = 0;
-			}
-
-			ColisionSHIP();
-			ColisionSHOOT();
-			frames++; frames_ship++; frequencia++; //Actualizacion de las variables temporales frames.
 		}
-		else {
+		else {//GAME LOOP (DEAD)
 
 			if (IM.IsKeyDown<KEY_BUTTON_ENTER>()) {
 				SM.SetCurScene<MenuScene>();
-				if (player_life <= 0) { //Cuando el jugador se queda sin vidas , se limpian todas las variables para que no carguen cosas erroneas en partidas posteriores.
+				if (player_life <= 0) { 
 					player_life = starterEnem = enemIncrement = velocidadNivel = -1;
 					Asts.clear();
 					m_score = 0;
 					ship.ship_angle = 0.0;
 					LevelScene::param.clear();
+					//Cuando el jugador se queda sin vidas , 
+					//se limpian todas las variables para que no carguen cosas erroneas en partidas posteriores.
 				}
 			}
+
 			if (IM.IsKeyDown<KEY_BUTTON_S>()) {
-				Ranking::Player aPlayer;
+				Ranking::Player aPlayer;//Objeto que almacena el nombre y score del jugador de la partida actual.
 
 				cout << "Enter your name: ";
-				cin >> aPlayer.playerName;
+				cin >> aPlayer.playerName;//Asignacion de variables.
 				aPlayer.playerScore = m_score;
 
-				rkg.ReadFile();
-				rkg.OrderArray(aPlayer);
-				rkg.WriteFile();
+				rkg.ReadFile();//Lee fichero y carga datos en el objeto ranking.
+				rkg.OrderArray(aPlayer);//Ordena los valores e introduce el nuevo score (orden por bubble sort).
+				rkg.WriteFile();//Sobreescribe el contenido del fichero binario con el nuevo contenido del objeto ranking.
 
 				cout << "RANKING - TOP 10" << endl;
-				for (int i = 0; i < 10; i++) {
+				for (int i = 0; i < 10; i++) {//Impresion del ranking.
 					cout << i + 1 << "--" << rkg.ranking[i].playerName << "-";
 					cout << rkg.ranking[i].playerScore << endl;
 				}
 			}
 
-			if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
+			if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {//Boton EXIT del ranking.
 				mouseCoords = IM.GetMouseCoords();
 				if (mouseCoords.x < 360 && mouseCoords.x > 240 && mouseCoords.y < 351 && mouseCoords.y > 288)SetState<SceneState::EXIT>();
 			}
@@ -199,7 +136,7 @@ void GameScene::Update(void) {
 }
 
 void GameScene::Draw(void) {
-	if (player_life != 0) {
+	if (player_life != 0) {//GAME LOOP (ALIVE)
 		m_background.Draw();
 		ship.Draw();
 
@@ -218,7 +155,7 @@ void GameScene::Draw(void) {
 		{ W.GetWidth() >> 3, int(W.GetHeight()*.17f), 1, 1 },
 		{ 255, 255, 255 });
 
-		if (pause == true) {
+		if (pause == true) {// PAUSE LOOP
 			m_background3.Draw();
 
 			GUI::DrawTextSolid<FontID::ASTEROIDS>("pause",
@@ -235,7 +172,7 @@ void GameScene::Draw(void) {
 			{ 255 });
 		}
 	}
-	else {
+	else {//GAME LOOP (DEAD)
 		m_background2.Draw();
 
 		GUI::DrawTextSolid<FontID::ASTEROIDS>(":Ranking:",

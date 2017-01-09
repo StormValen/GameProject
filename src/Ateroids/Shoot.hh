@@ -15,7 +15,7 @@ public:
 		shoot_angle = s.Angle();
 		objectID = ObjectID::SHOOT;
 	}
-	void Movement() { //Movimiento de la nave segun su angulo.
+	void Movement() { //Movimiento igual de la nave segun su angulo.
 		float A = cos(shoot_angle*PI / 180);
 		float B = sin(shoot_angle*PI / 180);
 		transform.x += (B * 10);
