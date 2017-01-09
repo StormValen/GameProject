@@ -17,10 +17,10 @@ GameScene::GameScene(void){
 	m_background3.objectID = ObjectID::BG_02;
 	m_score = 0;
 	player_life = num_ovnis = ovnis_velocity = increment_ovnis = -1; //-1 simboliza que aun no se ha asignado ningun dato de XML.
-	top[0] = 3000;
-	top[1] = 25;
-	top[2] = 50;
-	top[3] = 10;
+	top[0] = 30000;
+	top[1] = 75;
+	top[2] = 100;
+	top[3] = 50;
 	pause = false;
 }
 
@@ -39,11 +39,19 @@ void GameScene::Update(void) {
 	if (ovnis_velocity == -1)ovnis_velocity = LevelScene::param[2];
 	if (increment_ovnis == -1)increment_ovnis = LevelScene::param[3];
 
+	static MouseCoords mouseCoords(0, 0);
+
 	if (IM.IsKeyDown<KEY_BUTTON_ESCAPE>()) {
 		pause = !pause;
 	}
-	
 
+	if (pause == true) {
+		if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
+			mouseCoords = IM.GetMouseCoords();
+			if (mouseCoords.x < 360 && mouseCoords.x > 240 && mouseCoords.y < 351 && mouseCoords.y > 288)SetState<SceneState::EXIT>();
+		}
+	}
+	
 	if (pause == false) {
 		if (player_life != 0) {
 			//CONTROL VELOCIDADES
@@ -200,6 +208,11 @@ void GameScene::Draw(void) {
 
 			GUI::DrawTextSolid<FontID::ASTEROIDS01>("<press again to resume>",
 			{ W.GetWidth() >> 1, int(W.GetHeight()*.6f), 1, 1 },
+			{ 255 });
+
+
+			GUI::DrawTextSolid<FontID::ASTEROIDS>("exit",
+			{ W.GetWidth() >> 1, int(W.GetHeight()*.8f), 1, 1 },
 			{ 255 });
 		}
 	}
