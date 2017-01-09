@@ -175,6 +175,11 @@ void GameScene::Update(void) {
 					cout << rkg.ranking[i].playerScore << endl;
 				}
 			}
+
+			if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
+				mouseCoords = IM.GetMouseCoords();
+				if (mouseCoords.x < 360 && mouseCoords.x > 240 && mouseCoords.y < 351 && mouseCoords.y > 288)SetState<SceneState::EXIT>();
+			}
 		}
 	}	
 }
@@ -236,6 +241,10 @@ void GameScene::Draw(void) {
 		{ 255 });
 
 		GUI::DrawTextSolid<FontID::ASTEROIDS01>("<Press -ENTER- to continue>",
+		{ W.GetWidth() >> 1, int(W.GetHeight()*.7f), 1, 1 },
+		{ 255 });
+
+		GUI::DrawTextSolid<FontID::ASTEROIDS>("exit",
 		{ W.GetWidth() >> 1, int(W.GetHeight()*.8f), 1, 1 },
 		{ 255 });
 	}
