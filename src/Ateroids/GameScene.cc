@@ -40,7 +40,14 @@ void GameScene::Update(void) {
 
 	static MouseCoords mouseCoords(0, 0);
 
-	if (IM.IsKeyDown<KEY_BUTTON_ESCAPE>())pause != pause; //Escape activa o desactiva el menu de pause.
+	if (IM.IsKeyDown<KEY_BUTTON_ESCAPE>()) { 
+		if (pause == true) {
+		pause = false;
+		}
+		else if (pause == false) {
+			pause = true;
+		}
+	} //Escape activa o desactiva el menu de pause.
 	
 	if (pause == true) {//PAUSE LOOP
 		if (IM.IsMouseDown<MOUSE_BUTTON_LEFT>()) {
@@ -102,6 +109,7 @@ void GameScene::Update(void) {
 					player_life = starterEnem = enemIncrement = velocidadNivel = -1;
 					Asts.clear();
 					m_score = 0;
+					progLevel = 1;
 					ship.ship_angle = 0.0;
 					LevelScene::param.clear();
 					//Cuando el jugador se queda sin vidas , 

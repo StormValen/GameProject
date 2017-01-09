@@ -28,6 +28,7 @@ public:
 		Asts.push_back(nuevo_asteroide); //Se añade al contenedor de la clase.
 	}
 	void DeleteAST(int pos) { //Destruye el asteroide y genera dos del nivel inferior.
+
 		int D = (Asts[pos].dim) + 1;
 		if (D < 3) {
 			for (int i = 0; i < 2; i++) {
@@ -88,28 +89,45 @@ public:
 		}
 	}
 	void ColisionSHOOT(){
+		std::vector<int> astsToDelete;
+		std::vector<int> shootsToDelete;
 		for (int i = 0; i < Asts.size(); i++) {
 			for (int j = 0; j < Shoots.size(); j++) {
 				if (Asts[i].dim == 0) {	//Comprovacion si los disparos chocan con asteroides grandes.
 					if (Shoots[j].transform.x > Asts[i].x && Shoots[j].transform.x < Asts[i].x + 90 && Shoots[j].transform.y > Asts[i].y && Shoots[j].transform.y < Asts[i].y + 90) {
 						DeleteAST(i);
 						DeleteSHOOT(j);
+						//astsToDelete.push_back(i);
+						//shootsToDelete.push_back(j);
 					}
 				}
 				else if (Asts[i].dim == 1) { //Comprovacion si los disparos chocan con asteroides medianos.
 					if (Shoots[j].transform.x > Asts[i].x && Shoots[j].transform.x < Asts[i].x + 60 && Shoots[j].transform.y > Asts[i].y && Shoots[j].transform.y < Asts[i].y + 60) {
 						DeleteAST(i);
 						DeleteSHOOT(j);
+						//astsToDelete.push_back(i);
+						//shootsToDelete.push_back(j);
 					}
 				}
 				else if (Asts[i].dim == 2) { //Comprovacion si los disparos chocan con asteroides pequeños.
 					if (Shoots[j].transform.x > Asts[i].x && Shoots[j].transform.x < Asts[i].x + 30 && Shoots[j].transform.y > Asts[i].y && Shoots[j].transform.y < Asts[i].y + 30) {
 						DeleteAST(i);
 						DeleteSHOOT(j);
+						//astsToDelete.push_back(i);
+						//shootsToDelete.push_back(j);
 					}
 				}
 			}
 		}
+
+		/*for (int i = 0; i < shootsToDelete.size(); i++) {
+			DeleteSHOOT(shootsToDelete[i]);
+		}
+		for (int i = 0; i < astsToDelete.size(); i++) {
+			DeleteAST(astsToDelete[i]);
+		}
+		astsToDelete.clear();
+		shootsToDelete.clear();*/
 	}
 
 private:
