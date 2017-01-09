@@ -15,16 +15,16 @@ public:
 
 	const Player posicion = { "  ---  ",0 };
 
-	Player ranking[10] = {  posicion,
-							posicion,
-							posicion,
-							posicion,
-							posicion,
-							posicion,
-							posicion,
-							posicion,
-							posicion,
-							posicion };
+	Player ranking[10] = {posicion,
+						  posicion,
+						  posicion, 
+					   	  posicion, 
+						  posicion, 
+						  posicion, 
+						  posicion, 
+						  posicion, 
+						  posicion, 
+						  posicion, };
 
 	void ReadFile() {
 		ifstream fentrada("../../res/ranking/Ranking24.dat", ios::in | ios::binary);

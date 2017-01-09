@@ -38,9 +38,9 @@ public:
 		if (pos == 0)Asts.erase(Asts.begin()); //Destruccion del asteroide contactado.
 		else Asts.erase(Asts.begin() + (pos)); //
 		switch (D) {	//Sistema de puntuaciones.
-		case 0:m_score += 20;break;		//Grande.
-		case 1:m_score += 50;break;		//Mediano.
-		case 2:m_score += 100;break;	//Pequeño.
+		case 1:m_score += 20;break;		//Grande.
+		case 2:m_score += 50;break;		//Mediano.
+		case 3:m_score += 100;break;	//Pequeño.
 		default: break;
 		}
 	}
@@ -139,4 +139,5 @@ private:
 	// [3] U+  H-   augmentar/disminuir valores > rotacion de la nave
 	Ranking rkg;
 	bool pause;
+	bool velocitySet;
 };

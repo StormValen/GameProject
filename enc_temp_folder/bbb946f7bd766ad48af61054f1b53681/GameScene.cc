@@ -60,7 +60,7 @@ void GameScene::Update(void) {
 
 			if (m_score > 1000 && velocitySet == false) {
 				for (int i = 0; i < Asts.size(); i++) {
-					Asts[i].velocity++;
+					Asts[i].velocity += 2;
 				}
 				std::cout << "supNigga" << std::endl;
 				velocitySet = true;
