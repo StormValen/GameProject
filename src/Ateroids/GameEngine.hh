@@ -25,6 +25,7 @@ namespace GameEngine {
 		R.LoadTexture<ObjectID::BG_00>("gfx/bg.jpg");
 		R.LoadTexture<ObjectID::BG_01>("gfx/bg0.jpg");
 		R.LoadTexture<ObjectID::BG_02>("gfx/bgpause.png");
+
 	}
 	//! Adds the game scenes into the Scene Manager and decides which is the first screen
 	void AddScenes(void) {
@@ -46,7 +47,7 @@ namespace GameEngine {
 		AddScenes(); // Loads the scenes
 		bool m_isRunning{ true }; // Decides if the game loop is running
 		Scene *&m_curScene(SM.GetCurScene()); // Defines a reference to a pointer that points to the current scene pointer (mindblown)
-		while (!IM.HasQuit() && m_isRunning) { // Checks while game's still playable
+		while (!IM.HasQuit() && m_isRunning && m_curScene != nullptr) { // Checks while game's still playable
 			TM.FPSBegin(); // Calculates the time difference for deltaTime and FPS limiting purposes
 #pragma region GAME_UPDATE
 			switch (m_curScene->GetState()) { // Check for the state of the screen

@@ -162,7 +162,8 @@ void GameScene::Update(void) {
 				Ranking::Player aPlayer;
 
 				cout << "Enter your name: ";
-				cin >> aPlayer.playerName;
+				//cin >> aPlayer.playerName;
+				aPlayer.playerName = "sdsfsd";
 				aPlayer.playerScore = m_score;
 
 				rkg.ReadFile();

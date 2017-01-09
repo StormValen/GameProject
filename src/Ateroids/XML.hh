@@ -13,7 +13,7 @@ using namespace Logger;
 void Xml(std::string filename) {
 
 	rapidxml::xml_document<> doc;
-	std::ifstream file(filename);
+	std::ifstream file(RESOURCE_FILE(filename));
 	std::stringstream buffer;
 	buffer << file.rdbuf();
 	file.close();

@@ -13,27 +13,18 @@ public:
 		int playerScore;
 	};
 
-	Player posicion1 = { "  ---  ",0 };
-	Player posicion2 = { "  ---  ",0 };
-	Player posicion3 = { "  ---  ",0 };
-	Player posicion4 = { "  ---  ",0 };
-	Player posicion5 = { "  ---  ",0 };
-	Player posicion6 = { "  ---  ",0 };
-	Player posicion7 = { "  ---  ",0 };
-	Player posicion8 = { "  ---  ",0 };
-	Player posicion9 = { "  ---  ",0 };
-	Player posicion10 = { "  ---  ",0 };
+	const Player posicion = { "  ---  ",0 };
 
-	Player ranking[10] = { posicion1,
-						   posicion2,
-						   posicion3,
-						   posicion4,
-						   posicion5,
-						   posicion6,
-						   posicion7,	
-						   posicion8,
-						   posicion9,
-						   posicion10 };
+	Player ranking[10] = {  posicion,
+							posicion,
+							posicion,
+							posicion,
+							posicion,
+							posicion,
+							posicion,
+							posicion,
+							posicion,
+							posicion };
 
 	void ReadFile() {
 		ifstream fentrada("../../res/ranking/Ranking24.dat", ios::in | ios::binary);

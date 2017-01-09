@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Renderer" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAkAAAAAAAAACAAACAAAAAAAAgAAAEAQBCkAABACAg=</HashCode>
+      <FileName>Renderer.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Window" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAEAAAAABAQQIAAAAAQAAgCEAAJAA=</HashCode>
+      <FileName>Window.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Asteroid" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAgABBAAAgAAAAAAAAAABAARgAAAAAAA=</HashCode>
+      <FileName>Asteroid.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameScene" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAQhAAAGBgSABAAADAgAAIAQAYQBgAEQAQkQIAA=</HashCode>
+      <FileName>GameScene.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAECIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelScene" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAACAgAAAAAAAAAAAAAQAAAAAAGAACAQAAA=</HashCode>
+      <FileName>LevelScene.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuScene" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAAAAAAgAAAAAAAAAAAAAQAIAAAAEAAAAQAAA=</HashCode>
+      <FileName>MenuScene.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ranking" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAQAAAAAAAAEAAgAAAAAAAAAAACAAEAAA=</HashCode>
+      <FileName>Ranking.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scene" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABEAAAAAAAgAAoAAAAAAAQAAQAAAAAAMAAAAAAAA=</HashCode>
+      <FileName>Scene.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ship" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAgAAgAABAAAAAAABQCAACAAAEAAAAEAYAA=</HashCode>
+      <FileName>Ship.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shoot" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABgAABEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shoot.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sprite" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAgAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sprite.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InputManager" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAAAAFEAAIAIgAICAAICAQAAAFQAAgYAAgAAA=</HashCode>
+      <FileName>InputManager.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneManager" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAACAAAQAAQAAAASAAgAIAAAAQ=</HashCode>
+      <FileName>SceneManager.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TimeManager" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAQAQAAAAAAQgAAAEAAAAAAQAAgAAAAAAA=</HashCode>
+      <FileName>TimeManager.hh</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Color" Collapsed="true">
+    <Position X="7.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Color.hh</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Transform" Collapsed="true">
+    <Position X="11" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Transform.hh</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MouseCoords" Collapsed="true">
+    <Position X="9.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABiAAAAAAA=</HashCode>
+      <FileName>InputManager.hh</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="FontStyle" Collapsed="true">
+    <Position X="9.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAEAAAAAAAAAAAAQAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Renderer.hh</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FontID" Collapsed="true">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAEAQJAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ID.hh</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SceneState" Collapsed="true">
+    <Position X="9.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAQAACAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Scene.hh</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MouseButton" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAIAA=</HashCode>
+      <FileName>InputManager.hh</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="KeyButton" Collapsed="true">
+    <Position X="11" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAABAABAAAIAAAQAAAAAAAJAAACAAACgAAAAQAAIAA=</HashCode>
+      <FileName>InputManager.hh</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
