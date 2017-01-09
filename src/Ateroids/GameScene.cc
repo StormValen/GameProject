@@ -17,7 +17,7 @@ GameScene::GameScene(void){
 	m_background3.objectID = ObjectID::BG_02;
 	m_score = 0;
 	velocitySet = false;
-	player_life = num_ovnis = ovnis_velocity = increment_ovnis = -1; //-1 simboliza que aun no se ha asignado ningun dato de XML.
+	player_life = num_ovnis = ovnis_velocity = velocidadNivel = -1; //-1 simboliza que aun no se ha asignado ningun dato de XML.
 	top[0] = 10000;
 	top[1] = 100;
 	top[2] = 50;
@@ -38,7 +38,7 @@ void GameScene::Update(void) {
 	if (player_life == -1)player_life = LevelScene::param[0];	//Asignacion de las variables ledias de XML.
 	if (num_ovnis == -1)num_ovnis = LevelScene::param[1];
 	if (ovnis_velocity == -1)ovnis_velocity = LevelScene::param[2];
-	if (increment_ovnis == -1)increment_ovnis = LevelScene::param[3];
+	if (velocidadNivel == -1)velocidadNivel = LevelScene::param[3];
 
 	static MouseCoords mouseCoords(0, 0);
 
@@ -62,7 +62,6 @@ void GameScene::Update(void) {
 				for (int i = 0; i < Asts.size(); i++) {
 					Asts[i].velocity++;
 				}
-				std::cout << "supNigga" << std::endl;
 				velocitySet = true;
 			}
 
@@ -163,7 +162,7 @@ void GameScene::Update(void) {
 			if (IM.IsKeyDown<KEY_BUTTON_ENTER>()) {
 				SM.SetCurScene<MenuScene>();
 				if (player_life <= 0) { //Cuando el jugador se queda sin vidas , se limpian todas las variables para que no carguen cosas erroneas en partidas posteriores.
-					player_life = num_ovnis = ovnis_velocity = increment_ovnis = -1;
+					player_life = num_ovnis = ovnis_velocity = velocidadNivel = -1;
 					Asts.clear();
 					m_score = 0;
 					ship.ship_angle = 0.0;

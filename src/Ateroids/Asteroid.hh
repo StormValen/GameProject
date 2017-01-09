@@ -10,11 +10,11 @@ public:
 	int velocity;
 	int dim, dir;
 	
-	Asteroid(int dim):dim(dim){
+	Asteroid(int dim, int velocidadNivel):dim(dim){
 		x = rand()%600;
 		y = rand()%400;
 		dir = rand() % 8;
-		velocity = 1;
+		velocity = velocidadNivel;
 
 		switch (dim) {//Switch que difine el sprite del asteroide segun su dimension.
 		case 0:transform = { x,y, 90,90 }; objectID = ObjectID::GREAT_AST; break;
@@ -24,13 +24,14 @@ public:
 		}
 		
 	}
-	Asteroid(int dim, int x, int y) :dim(dim), x(x), y(y) {
+	Asteroid(int dim, int x, int y, int velocidadNivel) :dim(dim), x(x), y(y) {
 		dir = rand() % 8;
+		velocity = velocidadNivel;
 
 		switch (dim) {//Switch que difine el sprite del asteroide segun su dimension.
 		case 0:transform = { x,y, 90,90 }; objectID = ObjectID::GREAT_AST; break;
-		case 1:transform = { x,y,60,60 }; objectID = ObjectID::MIDDLE_AST; velocity = 2; break;
-		case 2:transform = { x,y, 30,30 }; objectID = ObjectID::LITTLE_AST; velocity = 3; break;
+		case 1:transform = { x,y,60,60 }; objectID = ObjectID::MIDDLE_AST; velocity++; break;
+		case 2:transform = { x,y, 30,30 }; objectID = ObjectID::LITTLE_AST; velocity += 2; break;
 		default:break;
 		}
 

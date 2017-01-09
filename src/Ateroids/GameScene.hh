@@ -24,14 +24,14 @@ public:
 	void Draw(void) override;
 
 	void AddAST() {
-		Asteroid nuevo_asteroide(0); //Generador de asteroides, tamaño grande.
+		Asteroid nuevo_asteroide(0,velocidadNivel); //Generador de asteroides, tamaño grande.
 		Asts.push_back(nuevo_asteroide); //Se añade al contenedor de la clase.
 	}
 	void DeleteAST(int pos) { //Destruye el asteroide y genera dos del nivel inferior.
 		int D = (Asts[pos].dim) + 1;
 		if (D < 3) {
 			for (int i = 0; i < 2; i++) {
-					Asteroid nuevo_asteroide(D,Asts[pos].transform.x, Asts[pos].transform.y ); //Asteroides nuevos.
+					Asteroid nuevo_asteroide(D,Asts[pos].transform.x, Asts[pos].transform.y, Asts[pos].velocity ); //Asteroides nuevos.
 					Asts.push_back(nuevo_asteroide);
 			}
 		}
@@ -122,7 +122,7 @@ private:
 	Ship ship;
 
 	
-	int player_life, num_ovnis, increment_ovnis; //Varibles leidas de xml segun el nivel escogido.
+	int player_life, num_ovnis, velocidadNivel; //Varibles leidas de xml segun el nivel escogido.
 	float ovnis_velocity;
 
 	//La frequencia de actualizacion del update del gameScene es damasiado alta y se llama a la funciones movimiento de cada emento demasiadas veces, por lo que se mueve muy rapido.

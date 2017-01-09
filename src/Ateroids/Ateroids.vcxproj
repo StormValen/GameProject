@@ -51,13 +51,12 @@
     <ClCompile Include="MenuScene.cc" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="easyMode.xml" />
-    <Xml Include="hardMode.xml" />
-    <Xml Include="mediumMode.xml" />
-    <Xml Include="player.xml" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <Xml Include="..\..\res\easyMode.xml" />
+    <Xml Include="..\..\res\hardMode.xml" />
+    <Xml Include="..\..\res\mediumMode.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F8B0CDCE-1104-4D85-BA5D-AF91FFC5DA4A}</ProjectGuid>

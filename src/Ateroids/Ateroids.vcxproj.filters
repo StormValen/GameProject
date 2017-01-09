@@ -116,20 +116,17 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="player.xml">
-      <Filter>XMLs</Filter>
-    </Xml>
-    <Xml Include="easyMode.xml">
-      <Filter>XMLs</Filter>
-    </Xml>
-    <Xml Include="mediumMode.xml">
-      <Filter>XMLs</Filter>
-    </Xml>
-    <Xml Include="hardMode.xml">
-      <Filter>XMLs</Filter>
-    </Xml>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <Xml Include="..\..\res\easyMode.xml">
+      <Filter>XMLs</Filter>
+    </Xml>
+    <Xml Include="..\..\res\hardMode.xml">
+      <Filter>XMLs</Filter>
+    </Xml>
+    <Xml Include="..\..\res\mediumMode.xml">
+      <Filter>XMLs</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
