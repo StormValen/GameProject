@@ -24,6 +24,7 @@ namespace GameEngine {
 		R.LoadTexture < ObjectID::SHOOT>("gfx/shot.png");
 		R.LoadTexture<ObjectID::BG_00>("gfx/bg.jpg");
 		R.LoadTexture<ObjectID::BG_01>("gfx/bg0.jpg");
+		R.LoadTexture<ObjectID::BG_0T>("gfx/bgT.jpg");
 		R.LoadTexture<ObjectID::BG_02>("gfx/bgpause.png");
 
 	}

@@ -60,7 +60,7 @@ public:
 			}
 			counter++;
 		}
-		for (int a = 0; a < 10; a++) { //Insercion del nuevo score
+		for (int a = 0; a < 10; a++) { //Insercion del nuevo score (SHIFT DOWN)
 			if (aPlayer.playerScore > ranking[a].playerScore && scoreSet == false) {
 				for (int j = 9; j >= a; j--) {
 					ranking[j].playerName = ranking[j - 1].playerName;

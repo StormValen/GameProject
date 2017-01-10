@@ -7,7 +7,8 @@ enum class ObjectID : const int {
 	SHOOT,
 	BG_00,	//Fondo negro.
 	BG_01,  //Fondo finguras.
-	BG_02	//Fondo pause.
+	BG_02,	//Fondo pause.
+	BG_0T
 };
 inline std::ostream &operator<<(std::ostream &os, const ObjectID &id) { return os << int(id); };
 inline std::istream &operator>>(std::istream &is, ObjectID &id) { return is >> reinterpret_cast<int&>(id); };

@@ -89,8 +89,6 @@ public:
 		}
 	}
 	void ColisionSHOOT(){
-		std::vector<int> astsToDelete;
-		std::vector<int> shootsToDelete;
 		for (int i = 0; i < Asts.size(); i++) {
 			for (int j = 0; j < Shoots.size(); j++) {
 				if (Asts[i].dim == 0) {	//Comprovacion si los disparos chocan con asteroides grandes.
@@ -98,8 +96,6 @@ public:
 						DeleteAST(i);
 						DeleteSHOOT(j);
 						break;
-						//astsToDelete.push_back(i);
-						//shootsToDelete.push_back(j);
 					}
 				}
 				else if (Asts[i].dim == 1) { //Comprovacion si los disparos chocan con asteroides medianos.
@@ -107,8 +103,6 @@ public:
 						DeleteAST(i);
 						DeleteSHOOT(j);
 						break;
-						//astsToDelete.push_back(i);
-						//shootsToDelete.push_back(j);
 					}
 				}
 				else if (Asts[i].dim == 2) { //Comprovacion si los disparos chocan con asteroides pequeños.
@@ -116,21 +110,10 @@ public:
 						DeleteAST(i);
 						DeleteSHOOT(j);
 						break;
-						//astsToDelete.push_back(i);
-						//shootsToDelete.push_back(j);
 					}
 				}
 			}
 		}
-
-		/*for (int i = 0; i < shootsToDelete.size(); i++) {
-			DeleteSHOOT(shootsToDelete[i]);
-		}
-		for (int i = 0; i < astsToDelete.size(); i++) {
-			DeleteAST(astsToDelete[i]);
-		}
-		astsToDelete.clear();
-		shootsToDelete.clear();*/
 	}
 
 private:
