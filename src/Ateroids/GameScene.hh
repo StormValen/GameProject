@@ -97,6 +97,7 @@ public:
 					if (Shoots[j].transform.x > Asts[i].x && Shoots[j].transform.x < Asts[i].x + 90 && Shoots[j].transform.y > Asts[i].y && Shoots[j].transform.y < Asts[i].y + 90) {
 						DeleteAST(i);
 						DeleteSHOOT(j);
+						break;
 						//astsToDelete.push_back(i);
 						//shootsToDelete.push_back(j);
 					}
@@ -105,6 +106,7 @@ public:
 					if (Shoots[j].transform.x > Asts[i].x && Shoots[j].transform.x < Asts[i].x + 60 && Shoots[j].transform.y > Asts[i].y && Shoots[j].transform.y < Asts[i].y + 60) {
 						DeleteAST(i);
 						DeleteSHOOT(j);
+						break;
 						//astsToDelete.push_back(i);
 						//shootsToDelete.push_back(j);
 					}
@@ -113,6 +115,7 @@ public:
 					if (Shoots[j].transform.x > Asts[i].x && Shoots[j].transform.x < Asts[i].x + 30 && Shoots[j].transform.y > Asts[i].y && Shoots[j].transform.y < Asts[i].y + 30) {
 						DeleteAST(i);
 						DeleteSHOOT(j);
+						break;
 						//astsToDelete.push_back(i);
 						//shootsToDelete.push_back(j);
 					}

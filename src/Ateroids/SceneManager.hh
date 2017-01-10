@@ -36,6 +36,7 @@ private:
 		auto scene = m_scenes.find(typeid(S));
 		return (scene != m_scenes.end()) ? dynamic_cast<S*>(scene->second) : nullptr;
 	}
+	
 private:
 	std::unordered_map<std::type_index, Scene*> m_scenes;	// Array of screens
 	Scene *m_curScene{ nullptr };							// Pointer to the current scene
