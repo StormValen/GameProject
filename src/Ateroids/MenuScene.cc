@@ -33,9 +33,9 @@ void MenuScene::Update(void) {
 void MenuScene::Draw(void) {
 	m_background.Draw();
 
-	GUI::DrawTextSolid<FontID::ASTEROIDS>(":asteroids:",
+	/*GUI::DrawTextSolid<FontID::ASTEROIDS>(":asteroids:",
 	{ W.GetWidth() >> 1, int(W.GetHeight()*.1f), 1, 1 },
-	{ 255, 255, 255 }); 
+	{ 255, 255, 255 }); */
 
 	GUI::DrawTextSolid<FontID::ASTEROIDS>("play",
 	{ W.GetWidth() >> 1, int(W.GetHeight()*.6f), 1, 1 },
